@@ -25,7 +25,6 @@ struct ArticleDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("article.title")
     }
 }
 
