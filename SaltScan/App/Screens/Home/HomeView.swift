@@ -40,6 +40,9 @@ struct HomeView: View {
                     }
                 }
             }
+            
+            BannerContentView()
+            
             Spacer()
             
             Text("home.scanProduct.description")
@@ -78,7 +81,7 @@ struct HomeView: View {
     
     private func setHasSeenOnboardingFlag() {
 #if DEBUG
-        showOnboarding = true
+        showOnboarding = false
 #else
         if !hasSeenOnboarding {
             showOnboarding = true
