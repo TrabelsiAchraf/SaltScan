@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIService {
+final class APIService {
     static let shared = APIService()
     private init() {}
     
@@ -19,10 +19,7 @@ class APIService {
         
         let (data, _) = try await URLSession.shared.data(from: url)
         
-        // Debugging: Display raw JSON response
-        if let jsonString = String(data: data, encoding: .utf8) {
-            print("Raw JSON: \(jsonString)")
-        }
+        debugNetwork(data: data)
         
         do {
             let productResponse = try JSONDecoder().decode(ProductResponse.self, from: data)
@@ -31,5 +28,15 @@ class APIService {
             print("Decoding Error: \(error)")
             throw error
         }
+    }
+    
+    // MARK: - Private
+    
+    private func debugNetwork(data: Data) {
+#if DEBUG
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Raw JSON: \(jsonString)")
+        }
+#endif
     }
 }
