@@ -22,7 +22,6 @@ struct ArticleCard: View {
                     Text(article.teaser)
                         .font(.subheadline)
                         .foregroundColor(.gray)
-                        .lineLimit(2)
                     
                     Spacer()
                 }
@@ -58,6 +57,7 @@ struct ArticleCard: View {
             illustration: "illustration_01"
         )
     )
+    .frame(height: 200)
     .environment(\.locale, Locale(identifier: "en"))
 }
 
@@ -70,6 +70,7 @@ struct ArticleCard: View {
             illustration: "illustration_01"
         )
     )
+    .frame(height: 200)
     .preferredColorScheme(.dark)
     .environment(\.locale, Locale(identifier: "en"))
 }

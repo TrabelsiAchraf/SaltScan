@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var scannedCode: String?
     @State private var showOnboarding = false
     @State private var showScan = false
@@ -53,6 +54,7 @@ struct HomeView: View {
                 }
             )
             .padding(.bottom, 16)
+            .padding(.horizontal, horizontalSizeClass == .regular ? 150 : 0)
         }
         .padding(.horizontal, 16)
         .sheet(isPresented: $showOnboarding) {

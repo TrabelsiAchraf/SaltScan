@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ResultView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Binding var scannedCode: String?
     @StateObject private var resultViewModel = ResultViewModel()
     private let buttonTapImpactFeedback = UIImpactFeedbackGenerator(style: .light)
@@ -71,7 +72,7 @@ struct ResultView: View {
                 .fill(.cardOver.opacity(0.95))
                 .shadow(radius: 5)
         )
-        .padding(.horizontal)
+        .padding(.horizontal, horizontalSizeClass == .regular ? 150 : 16)
         .transition(.move(edge: .bottom))
         .task {
             prepareHaptic()
