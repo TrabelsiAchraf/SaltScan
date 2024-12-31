@@ -69,6 +69,210 @@
         }
       }
     },
+    "article01.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salt is an essential ingredient in our diet, but did you know it can be as dangerous as it is useful? In moderate amounts, it helps maintain the balance of fluids in our body and supports the proper functioning of nerves and muscles. However, excessive salt consumption is linked to an increased risk of high blood pressure, cardiovascular diseases, and osteoporosis.\n\nReducing your salt intake can be a first step toward better health. Limit processed foods and opt for fresh foods, which are lower in sodium.\n\nSuggested source: World Health Organization (WHO), www.who.int"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le sel est un ingrédient essentiel à notre alimentation, mais saviez-vous qu’il peut être aussi dangereux qu’utile ? En quantité modérée, il aide à maintenir l’équilibre des fluides dans notre corps et soutient le bon fonctionnement des nerfs et des muscles. Cependant, une consommation excessive de sel est associée à des risques accrus d’hypertension artérielle, de maladies cardiovasculaires et d’ostéoporose.\n                \nRéduire votre consommation de sel peut être un premier pas vers une meilleure santé. Limitez les plats préparés et privilégiez les aliments frais, moins riches en sodium.\n                \nSource suggérée : Organisation mondiale de la santé (OMS), www.who.int"
+          }
+        }
+      }
+    },
+    "article01.teaser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover how salt can affect your health."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Découvrez comment le sel peut affecter votre santé."
+          }
+        }
+      }
+    },
+    "article01.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salt, friend or foe?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le sel, ami ou ennemi ?"
+          }
+        }
+      }
+    },
+    "article02.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "According to experts, an adult should not consume more than 5 grams of salt per day (about one teaspoon). However, in many countries, the average consumption far exceeds this recommendation, sometimes reaching 9 to 12 grams per day.\n\nWhy is this a problem? Excessive consumption overloads the kidneys and promotes water retention, which raises blood pressure. On the other hand, reducing consumption to less than 5 grams per day can significantly lower the risk of cardiovascular diseases.\n\nTip: Check the labels of the products you buy. You may be surprised to find that salt is hidden in many processed foods!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selon les experts, un adulte ne devrait pas consommer plus de 5 g de sel par jour (environ une cuillère à café). Pourtant, dans de nombreux pays, la consommation moyenne dépasse largement cette recommandation, atteignant parfois 9 à 12 g par jour.\n                \nPourquoi est-ce un problème ? Une consommation excessive surcharge les reins et favorise la rétention d’eau, ce qui augmente la pression artérielle. En revanche, réduire sa consommation à moins de 5 g par jour peut réduire considérablement le risque de maladies cardiovasculaires.\n                \nConseil : Vérifiez les étiquettes des produits que vous achetez. Vous serez surpris de découvrir que le sel est caché dans de nombreux aliments transformés !"
+          }
+        }
+      }
+    },
+    "article02.teaser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How much salt is actually necessary to stay healthy?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelle quantité de sel est réellement nécessaire pour rester en bonne santé ?"
+          }
+        }
+      }
+    },
+    "article02.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How much salt do you consume?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelle quantité de sel consommez-vous ?"
+          }
+        }
+      }
+    },
+    "article03.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may not see the salt you consume, but it’s everywhere! Processed foods like canned soups, sauces, snacks, and even bread are often high in salt. For example, a serving of breakfast cereal can contain up to 1 gram of salt, which is 20% of the recommended daily intake.\n\nTip: Carefully read the nutrition labels. Terms like “sodium” or “Na” indicate the presence of salt. For a quick estimate, 1 gram of sodium equals about 2.5 grams of salt.\n\nSuggested source: Food and Drug Administration (FDA), www.fda.gov"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous ne voyez peut-être pas le sel que vous consommez, mais il est partout ! Les aliments transformés comme les soupes en conserve, les sauces, les snacks ou encore le pain sont souvent riches en sel. Par exemple, une portion de céréales pour le petit-déjeuner peut contenir jusqu’à 1 g de sel, soit 20 % de l’apport recommandé quotidiennement.\n                \nAstuce : Lisez attentivement les étiquettes nutritionnelles. Les termes comme “sodium” ou “Na” indiquent la présence de sel. Pour une estimation rapide, 1 g de sodium équivaut à environ 2,5 g de sel.\n                \nSource suggérée : Food and Drug Administration (FDA), www.fda.gov"
+          }
+        }
+      }
+    },
+    "article03.teaser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn to detect hidden salt in processed foods."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apprenez à détecter le sel caché dans les aliments transformés."
+          }
+        }
+      }
+    },
+    "article03.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden salt in your favorite foods"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le sel caché dans vos aliments préférés"
+          }
+        }
+      }
+    },
+    "article04.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Want to reduce your salt intake without sacrificing the flavor of your dishes? Try these tips:\n\n    • Replace salt with herbs and spices like basil, thyme, turmeric, or cumin to enhance your meals.\n    • Avoid processed foods: opt for fresh, unprocessed foods.\n    • Taste before salting: many people add salt without even tasting their dish.\n    • Choose low-sodium alternatives: more and more brands offer reduced-sodium versions of their flagship products.\n\nReducing your salt consumption is a gradual process, but every little effort counts for your health."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous voulez réduire votre consommation de sel sans sacrifier la saveur de vos plats ? Essayez ces astuces :\n    •    Remplacez le sel par des herbes et des épices comme le basilic, le thym, le curcuma ou le cumin pour relever vos plats.\n    •    Évitez les produits transformés : optez pour des aliments frais et non transformés.\n    •    Goûtez avant de saler : de nombreuses personnes ajoutent du sel sans même goûter leur plat.\n    •    Choisissez des alternatives faibles en sel : de plus en plus de marques proposent des versions réduites en sodium de leurs produits phares.\n                \nRéduire votre consommation de sel est un processus graduel, mais chaque petit effort compte pour votre santé."
+          }
+        }
+      }
+    },
+    "article04.teaser" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some simple tips to eat less salt daily."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelques astuces simples pour manger moins salé au quotidien."
+          }
+        }
+      }
+    },
+    "article04.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to reduce your salt consumption?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment réduire sa consommation de sel ?"
+          }
+        }
+      }
+    },
     "contactUs.button.send" : {
       "extractionState" : "manual",
       "localizations" : {
