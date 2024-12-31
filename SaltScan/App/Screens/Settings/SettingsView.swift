@@ -39,7 +39,7 @@ struct SettingsView: View {
                 }
                 
                 NavigationLink("settings.section.termsAndPolicy.title") {
-                    EmptyView()
+                    TermsAndPrivacyView()
                 }
             } header: {
                 Text("settings.section.information.title")
