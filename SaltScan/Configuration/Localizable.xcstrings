@@ -1016,7 +1016,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Évaluation du sel :"
+            "value" : "Évaluation du sel : %@"
           }
         }
       }
