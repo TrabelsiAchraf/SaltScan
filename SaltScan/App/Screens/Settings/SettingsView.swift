@@ -46,6 +46,22 @@ struct SettingsView: View {
             }
             
             Section {
+                HStack {
+                    Text("settings.section.source1.title")
+                    Spacer()
+                    Link("settings.credit.visit.title", destination: URL(string: "https://fr.openfoodfacts.org")!)
+                }
+                
+                HStack {
+                    Text("settings.section.source2.title")
+                    Spacer()
+                    Link("settings.credit.visit.title", destination: URL(string: "https://undraw.co")!)
+                }
+            } header: {
+                Text("settings.section.credits.title")
+            }
+            
+            Section {
                 NavigationLink("settings.section.FAQ.title") {
                     FAQView()
                 }

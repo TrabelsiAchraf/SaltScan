@@ -1089,6 +1089,23 @@
         }
       }
     },
+    "settings.credit.visit.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visiter"
+          }
+        }
+      }
+    },
     "settings.section.appVersion.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1136,6 +1153,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contactez-nous"
+          }
+        }
+      }
+    },
+    "settings.section.credits.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crédits"
           }
         }
       }
@@ -1221,6 +1255,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Made with ❤️ by"
+          }
+        }
+      }
+    },
+    "settings.section.source1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Food Facts"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Food Facts"
+          }
+        }
+      }
+    },
+    "settings.section.source2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrations by unDraw"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrations par unDraw"
           }
         }
       }
