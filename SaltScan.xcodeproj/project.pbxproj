@@ -258,6 +258,7 @@
 				DEVELOPMENT_TEAM = D44ZSJA8CM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Salt Scan";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to scan barcodes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -288,6 +289,7 @@
 				DEVELOPMENT_TEAM = D44ZSJA8CM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Salt Scan";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to scan barcodes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
