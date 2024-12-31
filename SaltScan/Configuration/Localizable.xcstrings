@@ -324,6 +324,363 @@
         }
       }
     },
+    "FAQ.description.item01.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SaltScan is an app designed to help you check the sodium content in food products by scanning the product's barcode. It allows you to make informed choices about the products you consume."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SaltScan est une application conçue pour vous aider à vérifier la teneur en sodium des produits alimentaires en scannant le code-barres du produit. Elle vous permet de faire des choix éclairés concernant les produits que vous consommez."
+          }
+        }
+      }
+    },
+    "FAQ.description.item01.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is SaltScan?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qu’est-ce que SaltScan ?"
+          }
+        }
+      }
+    },
+    "FAQ.description.item02.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No, SaltScan does not require you to create an account. You can use the app without signing in."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non, SaltScan ne nécessite pas la création d’un compte. Vous pouvez utiliser l’application sans vous connecter."
+          }
+        }
+      }
+    },
+    "FAQ.description.item02.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do I need to create an account to use SaltScan?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dois-je créer un compte pour utiliser SaltScan ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item03.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SaltScan requests access to your camera solely to scan food products. We do not collect or store any images or personal data from your camera."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SaltScan demande l’accès à votre caméra uniquement pour scanner les produits alimentaires. Nous ne collectons ni ne stockons aucune image ni donnée personnelle provenant de votre caméra."
+          }
+        }
+      }
+    },
+    "FAQ.description.item03.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why does SaltScan request access to my camera?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pourquoi SaltScan demande-t-il l’accès à ma caméra ?"
+          }
+        }
+      }
+    },
+    "FAQ.description.item04.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No, SaltScan does not collect any personal information. The app only uses your camera to scan products, and no data is shared or stored."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non, SaltScan ne collecte aucune donnée personnelle. L’application utilise uniquement votre caméra pour scanner les produits, et aucune donnée n’est partagée ou stockée."
+          }
+        }
+      }
+    },
+    "FAQ.description.item04.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Is my personal data collected by SaltScan?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes données personnelles sont-elles collectées par SaltScan ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item05.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can disable camera access at any time by going to your device’s settings and turning off camera access for the SaltScan app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez désactiver l’accès à la caméra à tout moment en vous rendant dans les paramètres de votre appareil et en désactivant l’accès à la caméra pour l’application SaltScan."
+          }
+        }
+      }
+    },
+    "FAQ.description.item05.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How can I disable camera access in SaltScan?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment puis-je désactiver l’accès à la caméra dans SaltScan ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item06.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The accuracy of the data depends on the product’s barcode and the information available in our database. We strive to provide accurate information, but we recommend checking labels for confirmation."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’exactitude des données dépend du code-barres du produit et des informations disponibles dans notre base de données. Nous nous efforçons de fournir des informations précises, mais nous recommandons de vérifier les étiquettes pour confirmation."
+          }
+        }
+      }
+    },
+    "FAQ.description.item06.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How accurate is the information provided by SaltScan?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelle est l’exactitude des informations fournies par SaltScan ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item07.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If a product is not found in our database, you can manually enter the information. We are continuously updating the database to include more products."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si un produit n’est pas trouvé dans notre base de données, vous pouvez entrer manuellement les informations. Nous mettons constamment à jour la base de données pour inclure plus de produits."
+          }
+        }
+      }
+    },
+    "FAQ.description.item07.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can I scan products that are not in the database?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puis-je scanner des produits qui ne sont pas dans la base de données ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item08.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have any questions or need support, you can contact us at [Contact Us]."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez des questions ou avez besoin de support, vous pouvez nous contacter à [Contactez-nous]."
+          }
+        }
+      }
+    },
+    "FAQ.description.item08.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I contact customer support?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment contacter le support client ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item09.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currently, SaltScan is available in [English & French], and we are working on adding more languages in the future."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actuellement, SaltScan est disponible en [Anglais et Français], et nous travaillons à ajouter d’autres langues à l’avenir."
+          }
+        }
+      }
+    },
+    "FAQ.description.item09.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Is SaltScan available in multiple languages?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SaltScan est-il disponible en plusieurs langues ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.description.item10.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, you can suggest a product to be added by contacting our support team at [Contact Us]. We review all suggestions regularly."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui, vous pouvez suggérer un produit à ajouter en contactant notre équipe de support à [Contactez-nous]. Nous examinons régulièrement toutes les suggestions."
+          }
+        }
+      }
+    },
+    "FAQ.description.item10.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can I request to add a product to the database?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puis-je demander l’ajout d’un produit dans la base de données ?\n"
+          }
+        }
+      }
+    },
+    "FAQ.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        }
+      }
+    },
     "home.healthSection.title" : {
       "extractionState" : "manual",
       "localizations" : {

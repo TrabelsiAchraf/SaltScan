@@ -47,7 +47,7 @@ struct SettingsView: View {
             
             Section {
                 NavigationLink("settings.section.FAQ.title") {
-                    EmptyView()
+                    FAQView()
                 }
                 
                 NavigationLink("settings.section.contactUs.title") {
