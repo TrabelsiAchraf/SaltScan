@@ -8,9 +8,6 @@
 import SwiftUI
 import AVFoundation
 
-import SwiftUI
-import AVFoundation
-
 struct ScannerView: UIViewControllerRepresentable {
     class Coordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         var parent: ScannerView
@@ -24,9 +21,15 @@ struct ScannerView: UIViewControllerRepresentable {
             self._captureSession = captureSession
         }
         
-        func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-            guard let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
-                  let barcode = metadataObject.stringValue else { return }
+        func metadataOutput(
+            _ output: AVCaptureMetadataOutput,
+            didOutput metadataObjects: [AVMetadataObject],
+            from connection: AVCaptureConnection
+        ) {
+            guard
+                let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
+                let barcode = metadataObject.stringValue
+            else { return }
             
             parent.completion(barcode)
         }
@@ -50,6 +53,7 @@ struct ScannerView: UIViewControllerRepresentable {
               captureSession.canAddInput(videoInput) else {
             return vc
         }
+        
         captureSession.addInput(videoInput)
         
         let metadataOutput = AVCaptureMetadataOutput()
@@ -60,9 +64,28 @@ struct ScannerView: UIViewControllerRepresentable {
         }
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = vc.view.layer.bounds
+        previewLayer.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: UIScreen.main.bounds.width,
+            height: UIScreen.main.bounds.height
+        )
         previewLayer.videoGravity = .resizeAspectFill
-        vc.view.layer.addSublayer(previewLayer)
+        
+        let containerView = UIView(frame: vc.view.bounds)
+        containerView.backgroundColor = .black
+        containerView.layer.addSublayer(previewLayer)
+        vc.view.addSubview(containerView)
+        
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: vc.view.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor)
+        ])
+        
+        containerView.layer.layoutSublayers()
         
         DispatchQueue.global(qos: .background).async {
             captureSession.startRunning()
@@ -71,5 +94,10 @@ struct ScannerView: UIViewControllerRepresentable {
         return vc
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        if let containerView = uiViewController.view.subviews.first,
+           let previewLayer = containerView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer {
+            previewLayer.frame = containerView.bounds
+        }
+    }
 }
