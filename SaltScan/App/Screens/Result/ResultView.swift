@@ -48,11 +48,8 @@ struct ResultView: View {
                     } else {
                         Text("result.product.unknown")
                     }
-                } else if let errorMessage = resultViewModel.errorMessage {
-                    Text(
-                        String(format: "result.product.error", errorMessage)
-                    )
-                    .foregroundColor(.red)
+                } else if resultViewModel.errorMessage != nil {
+                    Text("result.product.unknown")
                 } else {
                     ProgressView("result.product.loading")
                 }
