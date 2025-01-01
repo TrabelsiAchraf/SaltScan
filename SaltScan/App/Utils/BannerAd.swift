@@ -56,7 +56,7 @@ private struct BannerView: UIViewRepresentable {
         
         private(set) lazy var bannerView: GADBannerView = {
             let banner = GADBannerView(adSize: parent.adSize)
-            banner.adUnitID = AdMobConstant.adUnitID_prod
+            banner.adUnitID = AdMobConstants.adUnitID_prod
             banner.load(GADRequest())
             banner.delegate = self
             return banner
@@ -78,9 +78,4 @@ private struct BannerView: UIViewRepresentable {
             debugPrint("FAILED TO RECEIVE AD: \(error.localizedDescription)")
         }
     }
-}
-
-struct AdMobConstant {
-    static let adUnitID_google_test = "ca-app-pub-3940256099942544/2435281174"
-    static let adUnitID_prod = "ca-app-pub-2913057370378963/8850787801"
 }
