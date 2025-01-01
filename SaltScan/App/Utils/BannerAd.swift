@@ -56,7 +56,7 @@ private struct BannerView: UIViewRepresentable {
         
         private(set) lazy var bannerView: GADBannerView = {
             let banner = GADBannerView(adSize: parent.adSize)
-            banner.adUnitID = AdMobConstant.adUnitID_google_test
+            banner.adUnitID = AdMobConstant.adUnitID_prod
             banner.load(GADRequest())
             banner.delegate = self
             return banner

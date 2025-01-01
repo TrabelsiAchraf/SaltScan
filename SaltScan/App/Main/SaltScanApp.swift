@@ -13,6 +13,7 @@ struct SaltScanApp: App {
     @AppStorage("isDarkMode") private var appearance: Appearance = .system
     
     init() {
+        setupAdmob()
     }
     
     var body: some Scene {
@@ -25,7 +26,7 @@ struct SaltScanApp: App {
     // MARK: - Private
     
     private func setupAdmob() {
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "89049032007008882600122441581485" ]
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "4812cfe835374af410fe16b30d8b1039" ]
         GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 }
