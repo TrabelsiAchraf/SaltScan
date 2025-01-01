@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContactUsView: View {
-    @State private var showingAlert = false
+    @State private var showingSentAlert = false
+    @State private var showingLimitReachedAlert = false
     @State private var showingMailView = false
     @State private var selectedHelpReason = "contactUs.helpReasons.01".localize
     @State private var tellUsTextField: String = ""
@@ -70,7 +71,12 @@ struct ContactUsView: View {
                             content: "contactUs.button.send",
                             color: tellUsTextField.isEmpty ? .gray : .blue,
                             action: {
-                                showingMailView = true
+                                if canSendMailToday() {
+                                    showingMailView = true
+                                    incrementMailCount()
+                                } else {
+                                    showingLimitReachedAlert = true
+                                }
                             }
                         )
                         .padding()
@@ -86,13 +92,16 @@ struct ContactUsView: View {
                 messageBody: prepareMailMessageBody()
             ) { mailStatus in
                 if mailStatus == .sent {
-                    showingAlert = true
+                    showingSentAlert = true
                 }
                 showingMailView = false
             }
         }
-        .alert("contactUs.sent.alert.title", isPresented: $showingAlert) {
+        .alert("contactUs.sent.alert.title", isPresented: $showingSentAlert) {
             Button("contactUs.sent.alert.ok", role: .cancel) { }
+        }
+        .alert("contactUs.limitReached.alert.title", isPresented: $showingLimitReachedAlert) {
+            Button("contactUs.limitReached.alert.ok", role: .cancel) { }
         }
     }
     
@@ -103,6 +112,24 @@ struct ContactUsView: View {
             format: "contactUs.howDoIFeel.mail".localize,
             selectedFeedback.rawValue
         )
+    }
+    
+    private func canSendMailToday() -> Bool {
+        let lastSentDate = UserDefaults.standard.object(forKey: "lastSentDate") as? Date ?? Date.distantPast
+        let currentDate = Calendar.current.startOfDay(for: Date())
+
+        if !Calendar.current.isDate(lastSentDate, inSameDayAs: currentDate) {
+            UserDefaults.standard.set(0, forKey: "sentMailsToday")
+        }
+
+        let sentMailsToday = UserDefaults.standard.integer(forKey: "sentMailsToday")
+        return sentMailsToday < 3
+    }
+
+    private func incrementMailCount() {
+        let sentMailsToday = UserDefaults.standard.integer(forKey: "sentMailsToday")
+        UserDefaults.standard.set(sentMailsToday + 1, forKey: "sentMailsToday")
+        UserDefaults.standard.set(Date(), forKey: "lastSentDate")
     }
 }
 

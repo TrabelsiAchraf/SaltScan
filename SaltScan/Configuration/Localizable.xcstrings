@@ -477,6 +477,40 @@
         }
       }
     },
+    "contactUs.limitReached.alert.ok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D’accord !"
+          }
+        }
+      }
+    },
+    "contactUs.limitReached.alert.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have reached the limit of emails sent today. Please try again tomorrow."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez atteint la limite de mails envoyés aujourd’hui. Veuillez réessayer demain."
+          }
+        }
+      }
+    },
     "contactUs.section.title" : {
       "extractionState" : "manual",
       "localizations" : {
