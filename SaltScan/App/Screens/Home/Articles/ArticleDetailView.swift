@@ -21,6 +21,26 @@ struct ArticleDetailView: View {
                     .font(.body)
                     .multilineTextAlignment(.leading)
                 
+                HStack {
+                    Text("article.source.title")
+                        .bold()
+                        .multilineTextAlignment(.leading)
+                    
+                    Text(article.source.hint.localize)
+                        .multilineTextAlignment(.leading)
+                        .font(.body)
+                        .foregroundColor(.blue)
+                        .underline()
+                        .onTapGesture {
+                            if let url = URL(
+                                string: article.source.link.localize
+                            ) {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                    Spacer()
+                }
+                
                 Spacer()
             }
             .padding()
@@ -34,7 +54,11 @@ struct ArticleDetailView: View {
             title: "Le sel, ami ou ennemi ?",
             teaser: "Découvrez comment le sel peut affecter votre santé.",
             content: "Le sel est essentiel...",
-            illustration: "illustration_01"
+            illustration: "illustration_01",
+            source: (
+                hint: "WHO Website",
+                link: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+            )
         )
     )
     .environment(\.locale, Locale(identifier: "en"))
@@ -46,7 +70,11 @@ struct ArticleDetailView: View {
             title: "Le sel, ami ou ennemi ?",
             teaser: "Découvrez comment le sel peut affecter votre santé.",
             content: "Le sel est essentiel...",
-            illustration: "illustration_01"
+            illustration: "illustration_01",
+            source: (
+                hint: "WHO Website",
+                link: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+            )
         )
     )
     .preferredColorScheme(.dark)

@@ -52,6 +52,23 @@
         }
       }
     },
+    "article.source.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source: "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source: "
+          }
+        }
+      }
+    },
     "article.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -82,6 +99,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le sel est un ingrédient essentiel à notre alimentation, mais saviez-vous qu’il peut être aussi dangereux qu’utile ? En quantité modérée, il aide à maintenir l’équilibre des fluides dans notre corps et soutient le bon fonctionnement des nerfs et des muscles. Cependant, une consommation excessive de sel est associée à des risques accrus d’hypertension artérielle, de maladies cardiovasculaires et d’ostéoporose.\n                \nRéduire votre consommation de sel peut être un premier pas vers une meilleure santé. Limitez les plats préparés et privilégiez les aliments frais, moins riches en sodium.\n                \nSource suggérée : Organisation mondiale de la santé (OMS), www.who.int"
+          }
+        }
+      }
+    },
+    "article01.source.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WHO Website"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Site web de l’OMS"
+          }
+        }
+      }
+    },
+    "article01.source.link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
           }
         }
       }
@@ -137,6 +188,40 @@
         }
       }
     },
+    "article02.source.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WHO Website"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Site web de l’OMS"
+          }
+        }
+      }
+    },
+    "article02.source.link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+          }
+        }
+      }
+    },
     "article02.teaser" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -188,6 +273,40 @@
         }
       }
     },
+    "article03.source.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U.S. Food and Drug Administration (FDA)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "U.S. Food and Drug Administration (FDA)"
+          }
+        }
+      }
+    },
+    "article03.source.link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.fda.gov/food/nutrition-education-resources-materials/sodium-your-diet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.fda.gov/food/nutrition-education-resources-materials/sodium-your-diet"
+          }
+        }
+      }
+    },
     "article03.teaser" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -235,6 +354,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous voulez réduire votre consommation de sel sans sacrifier la saveur de vos plats ? Essayez ces astuces :\n    •    Remplacez le sel par des herbes et des épices comme le basilic, le thym, le curcuma ou le cumin pour relever vos plats.\n    •    Évitez les produits transformés : optez pour des aliments frais et non transformés.\n    •    Goûtez avant de saler : de nombreuses personnes ajoutent du sel sans même goûter leur plat.\n    •    Choisissez des alternatives faibles en sel : de plus en plus de marques proposent des versions réduites en sodium de leurs produits phares.\n                \nRéduire votre consommation de sel est un processus graduel, mais chaque petit effort compte pour votre santé."
+          }
+        }
+      }
+    },
+    "article04.source.hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Centers for Disease Control and Prevention (CDC)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Centers for Disease Control and Prevention (CDC)"
+          }
+        }
+      }
+    },
+    "article04.source.link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.cdc.gov/salt/about/index.html"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.cdc.gov/salt/about/index.html"
           }
         }
       }

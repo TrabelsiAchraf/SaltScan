@@ -13,4 +13,5 @@ struct Article: Identifiable {
     let teaser: String
     let content: String
     let illustration: String
+    let source: (hint: String, link: String)
 }

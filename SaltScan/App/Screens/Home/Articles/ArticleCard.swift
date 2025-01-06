@@ -54,7 +54,11 @@ struct ArticleCard: View {
             title: "Le sel, ami ou ennemi ?",
             teaser: "Découvrez comment le sel peut affecter votre santé.",
             content: "Le sel est essentiel...",
-            illustration: "illustration_01"
+            illustration: "illustration_01",
+            source: (
+                hint: "WHO Website",
+                link: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+            )
         )
     )
     .frame(height: 200)
@@ -67,7 +71,11 @@ struct ArticleCard: View {
             title: "Le sel, ami ou ennemi ?",
             teaser: "Découvrez comment le sel peut affecter votre santé.",
             content: "Le sel est essentiel...",
-            illustration: "illustration_01"
+            illustration: "illustration_01",
+            source: (
+                hint: "WHO Website",
+                link: "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+            )
         )
     )
     .frame(height: 200)
