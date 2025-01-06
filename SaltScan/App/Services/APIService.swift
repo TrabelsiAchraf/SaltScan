@@ -13,19 +13,22 @@ final class APIService {
     
     func fetchProduct(byBarcode barcode: String) async throws -> ProductResponse {
         let urlString = "https://world.openfoodfacts.org/api/v0/product/\(barcode).json"
-        guard let url = URL(string: urlString) else {
-            throw URLError(.badURL)
-        }
+        guard let url = URL(string: urlString) else { throw URLError(.badURL) }
         
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        debugNetwork(data: data)
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 10
+        let session = URLSession(configuration: config)
         
         do {
+            let (data, _) = try await session.data(from: url)
+            debugNetwork(data: data)
             let productResponse = try JSONDecoder().decode(ProductResponse.self, from: data)
             return productResponse
+        } catch let error as URLError {
+            if error.code == .timedOut { debugPrint("Error: Request timed out") }
+            throw error
         } catch {
-            print("Decoding Error: \(error)")
+            debugPrint("Decoding Error: \(error)")
             throw error
         }
     }
