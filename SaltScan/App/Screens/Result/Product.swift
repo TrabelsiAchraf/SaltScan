@@ -28,3 +28,19 @@ struct Nutriments: Codable {
         case sodium100g = "sodium_100g"
     }
 }
+
+struct FirebaseProductResponse: Codable {
+    let product_name: String?
+    let sodium_100g: Double?
+}
+
+extension FirebaseProductResponse {
+    func mapToProductResponse() -> ProductResponse {
+        .init(
+            product: .init(
+                productName: product_name,
+                nutriments: .init(sodium100g: sodium_100g)
+            )
+        )
+    }
+}
