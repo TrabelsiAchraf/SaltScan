@@ -2,8 +2,15 @@
   "sourceLanguage" : "en",
   "strings" : {
     "app.appearance.automatic" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تلقائي"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19,8 +26,15 @@
       }
     },
     "app.appearance.dark" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "داكن"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -36,8 +50,15 @@
       }
     },
     "app.appearance.light" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ضوء"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,8 +74,15 @@
       }
     },
     "article.source.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المصدر: "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,8 +98,15 @@
       }
     },
     "article.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مقالة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -87,8 +122,15 @@
       }
     },
     "article01.content" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الملح مكون أساسي في نظامنا الغذائي، لكن هل كنت تعلم أنه يمكن أن يكون خطيرًا بنفس القدر الذي هو مفيد فيه؟ بكميات معتدلة، يساعد الملح في الحفاظ على توازن السوائل في أجسامنا ويدعم الوظيفة السليمة للأعصاب والعضلات. ومع ذلك، فإن استهلاك الملح المفرط مرتبط بزيادة خطر ارتفاع ضغط الدم، وأمراض القلب والأوعية الدموية، وهشاشة العظام.\n\nيمكن أن يكون تقليل تناول الملح خطوة أولى نحو صحة أفضل. قم بتحديد الأطعمة المعالجة واختر الأطعمة الطازجة، التي تحتوي على نسبة أقل من الصوديوم.\n\nالمصدر المقترح: منظمة الصحة العالمية (WHO)، www.who.int"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -104,8 +146,15 @@
       }
     },
     "article01.source.hint" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موقع منظمة الصحة العالمية"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -121,8 +170,15 @@
       }
     },
     "article01.source.link" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -138,8 +194,15 @@
       }
     },
     "article01.teaser" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اكتشف كيف يمكن أن يؤثر الملح على صحتك."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -155,8 +218,15 @@
       }
     },
     "article01.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملح، صديق أم عدو؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -172,8 +242,15 @@
       }
     },
     "article02.content" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وفقًا للخبراء، يجب ألا يستهلك البالغ أكثر من 5 جرامات من الملح يوميًا (حوالي ملعقة صغيرة واحدة). ومع ذلك، في العديد من البلدان، يتجاوز متوسط الاستهلاك بكثير هذه التوصية، في بعض الأحيان يصل إلى 9 إلى 12 جرامًا يوميًا.\n\nلماذا تعتبر هذه مشكلة؟ إن الاستهلاك الزائد يرهق الكلى ويعزز احتباس الماء، مما يرفع ضغط الدم. من ناحية أخرى، فإن تقليل الاستهلاك إلى أقل من 5 جرامات يوميًا يمكن أن يقلل بشكل كبير من خطر الإصابة بأمراض القلب والأوعية الدموية.\n\nنصيحة: تحقق من ملصقات المنتجات التي تشتريها. قد تُفاجأ عندما تجد أن الملح مخفي في العديد من الأطعمة المصنعة!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -189,8 +266,15 @@
       }
     },
     "article02.source.hint" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موقع منظمة الصحة العالمية"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -206,8 +290,15 @@
       }
     },
     "article02.source.link" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.who.int/news-room/fact-sheets/detail/salt-reduction"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -223,8 +314,15 @@
       }
     },
     "article02.teaser" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كمية الملح اللازمة فعليًا للبقاء بصحة جيدة؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -240,8 +338,15 @@
       }
     },
     "article02.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كمية الملح التي تستهلكها؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -257,8 +362,15 @@
       }
     },
     "article03.content" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد لا ترى الملح الذي تتناوله، لكنه موجود في كل مكان! الأطعمة المصنعة مثل الحساء المعلب، والصلصات، والوجبات الخفيفة، وحتى الخبز غالبًا ما تحتوي على نسبة عالية من الملح. على سبيل المثال، يمكن أن تحتوي حصة من حبوب الإفطار على ما يصل إلى 1 جرام من الملح، وهو 20% من الكمية اليومية الموصى بها.\n\nنصيحة: اقرأ تسميات التغذية بعناية. تشير مصطلحات مثل \"الصوديوم\" أو \"Na\" إلى وجود الملح. للحصول على تقدير سريع، يعادل 1 جرام من الصوديوم حوالي 2.5 جرام من الملح.\n\nالمصدر المقترح: إدارة الغذاء والدواء (FDA)، www.fda.gov"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -274,8 +386,15 @@
       }
     },
     "article03.source.hint" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إدارة الغذاء والدواء الأمريكية (FDA)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -291,8 +410,15 @@
       }
     },
     "article03.source.link" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.fda.gov/food/nutrition-education-resources-materials/sodium-your-diet"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -308,8 +434,15 @@
       }
     },
     "article03.teaser" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعلم كيفية اكتشاف الملح المخفي في الأطعمة المعالجة."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -325,8 +458,15 @@
       }
     },
     "article03.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملح مخفي في أطعمتك المفضلة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -342,8 +482,15 @@
       }
     },
     "article04.content" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل ترغب في تقليل استهلاكك للملح دون التضحية بنكهة أطباقك؟ جرب هذه النصائح:\n\n    • استبدل الملح بالأعشاب والتوابل مثل الريحان، الزعتر، الكركم، أو الكمون لتعزيز وجباتك.\n    • تجنب الأطعمة المعالجة: اختر الأطعمة الطازجة وغير المعالجة.\n    • تذوق قبل إضافة الملح: العديد من الأشخاص يضيفون الملح دون تذوق طبقهم.\n    • اختر بدائل منخفضة الصوديوم: المزيد والمزيد من العلامات التجارية تقدم نسخ منخفضة الصوديوم من منتجاتها الرئيسية.\n\nتخفيض استهلاكك للملح هو عملية تدريجية، ولكن كل جهد صغير يحسب لصحتك."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -359,8 +506,15 @@
       }
     },
     "article04.source.hint" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مراكز السيطرة على الأمراض والوقاية منها (CDC)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -376,8 +530,15 @@
       }
     },
     "article04.source.link" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://www.cdc.gov/salt/about/index.html"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -393,8 +554,15 @@
       }
     },
     "article04.teaser" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بعض النصائح البسيطة لتناول كمية أقل من الملح يوميًا."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -410,8 +578,15 @@
       }
     },
     "article04.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف تقلل من استهلاكك للملح؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -427,8 +602,15 @@
       }
     },
     "contactUs.button.send" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أرسل لي"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -444,8 +626,15 @@
       }
     },
     "contactUs.FAQ.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل قرأت قسم الأسئلة الشائعة لدينا؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -461,8 +650,15 @@
       }
     },
     "contactUs.helpReasons.01" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أود طلب ميزة جديدة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -478,8 +674,15 @@
       }
     },
     "contactUs.helpReasons.02" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لدي سؤال"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -495,8 +698,15 @@
       }
     },
     "contactUs.helpReasons.03" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لدي ملاحظات حول التطبيق"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -512,8 +722,15 @@
       }
     },
     "contactUs.helpReasons.04" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هناك شيء لا يعمل"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -529,8 +746,15 @@
       }
     },
     "contactUs.helpReasons.05" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شيء آخر"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -546,8 +770,15 @@
       }
     },
     "contactUs.helpReasons.textfield" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أخبرنا بما يحدث"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -563,8 +794,15 @@
       }
     },
     "contactUs.helpReasons.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف يمكننا المساعدة؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -580,8 +818,15 @@
       }
     },
     "contactUs.howCanWeHelp.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف يمكننا مساعدتك؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -597,8 +842,15 @@
       }
     },
     "contactUs.howDoIFeel.mail" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف أشعر: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -614,8 +866,15 @@
       }
     },
     "contactUs.howDoYouFeel.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف تشعر؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -631,8 +890,15 @@
       }
     },
     "contactUs.limitReached.alert.ok" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حسنًا"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -648,8 +914,15 @@
       }
     },
     "contactUs.limitReached.alert.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لقد وصلت إلى الحد الأقصى لعدد الرسائل الإلكترونية المرسلة اليوم. يرجى المحاولة مرة أخرى غدًا"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -665,8 +938,15 @@
       }
     },
     "contactUs.section.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتصل بنا"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -682,8 +962,15 @@
       }
     },
     "contactUs.sent.alert.ok" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حسنًا"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -699,8 +986,15 @@
       }
     },
     "contactUs.sent.alert.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم إرسال الرسالة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -716,8 +1010,15 @@
       }
     },
     "FAQ.description.item01.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SaltScan هو تطبيق مصمم لمساعدتك في التحقق من محتوى الصوديوم في المنتجات الغذائية من خلال مسح رمز المنتج. يتيح لك اتخاذ خيارات مستنيرة بشأن المنتجات التي تستهلكها."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -733,8 +1034,15 @@
       }
     },
     "FAQ.description.item01.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ما هو SaltScan؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -750,8 +1058,15 @@
       }
     },
     "FAQ.description.item02.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا، لا يتطلب SaltScan منك إنشاء حساب. يمكنك استخدام التطبيق دون تسجيل الدخول."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -767,8 +1082,15 @@
       }
     },
     "FAQ.description.item02.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل أحتاج إلى إنشاء حساب لاستخدام SaltScan؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -784,8 +1106,15 @@
       }
     },
     "FAQ.description.item03.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تطلب SaltScan الوصول إلى كاميرتك فقط لماسح المنتجات الغذائية. نحن لا نجمع أو نخزن أي صور أو بيانات شخصية من كاميرتك."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -801,8 +1130,15 @@
       }
     },
     "FAQ.description.item03.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لماذا يطلب SaltScan الوصول إلى كاميرتي؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -818,8 +1154,15 @@
       }
     },
     "FAQ.description.item04.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا، SaltScan لا تجمع أي معلومات شخصية. التطبيق يستخدم كاميرتك فقط لمسح المنتجات، ولا يتم مشاركة البيانات أو تخزينها."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -835,8 +1178,15 @@
       }
     },
     "FAQ.description.item04.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل يتم جمع بياناتي الشخصية بواسطة SaltScan؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -852,8 +1202,15 @@
       }
     },
     "FAQ.description.item05.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكنك تعطيل الوصول إلى الكاميرا في أي وقت من خلال الذهاب إلى إعدادات جهازك وإيقاف الوصول إلى الكاميرا لتطبيق SaltScan."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -869,8 +1226,15 @@
       }
     },
     "FAQ.description.item05.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف يمكنني تعطيل الوصول إلى الكاميرا في SaltScan؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -886,8 +1250,15 @@
       }
     },
     "FAQ.description.item06.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعتمد دقة البيانات على الرمز الشريطي للمنتج والمعلومات المتاحة في قاعدة بياناتنا. نسعى لتقديم معلومات دقيقة، لكننا نوصي بالتحقق من الملصقات للتأكيد."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -903,8 +1274,15 @@
       }
     },
     "FAQ.description.item06.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ما مدى دقة المعلومات المقدمة من SaltScan؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -920,8 +1298,15 @@
       }
     },
     "FAQ.description.item07.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا لم يتم العثور على منتج في قاعدة البيانات الخاصة بنا، يمكنك إدخال المعلومات يدويًا. نحن نقوم بتحديث قاعدة البيانات باستمرار لإضافة المزيد من المنتجات."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -937,8 +1322,15 @@
       }
     },
     "FAQ.description.item07.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل يمكنني مسح المنتجات التي ليست في قاعدة البيانات؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -954,8 +1346,15 @@
       }
     },
     "FAQ.description.item08.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا كانت لديك أي أسئلة أو تحتاج إلى دعم، يمكنك الاتصال بنا على [اتصل بنا]."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -971,8 +1370,15 @@
       }
     },
     "FAQ.description.item08.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف أستطيع الاتصال بدعم العملاء؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -988,8 +1394,15 @@
       }
     },
     "FAQ.description.item09.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حالياً، SaltScan متاحة باللغتين [الإنجليزية والفرنسية]، ونحن نعمل على إضافة المزيد من اللغات في المستقبل."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1005,8 +1418,15 @@
       }
     },
     "FAQ.description.item09.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل يتوفر SaltScan بعدة لغات؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1022,8 +1442,15 @@
       }
     },
     "FAQ.description.item10.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نعم، يمكنك اقتراح منتج ليتم إضافته عن طريق الاتصال بفريق الدعم لدينا على [اتصل بنا]. نحن نراجع جميع الاقتراحات بانتظام."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1039,8 +1466,15 @@
       }
     },
     "FAQ.description.item10.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل يمكنني طلب إضافة منتج إلى قاعدة البيانات؟"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1056,8 +1490,15 @@
       }
     },
     "FAQ.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأسئلة الشائعة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1073,8 +1514,15 @@
       }
     },
     "home.healthSection.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مقالات عن الملح والصحة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1090,8 +1538,15 @@
       }
     },
     "home.scanProduct.button.start" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح منتج"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1107,8 +1562,15 @@
       }
     },
     "home.scanProduct.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قم بمسح المنتجات لاكتشاف محتوى الملح فيها."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1124,8 +1586,15 @@
       }
     },
     "main.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salt Scan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1141,8 +1610,15 @@
       }
     },
     "onboarding.button.start" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابدأ الآن"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1158,8 +1634,15 @@
       }
     },
     "onboarding.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابدأ الآن مع SaltScan"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1175,8 +1658,15 @@
       }
     },
     "onboarding.tuto.item0.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قم بمسح رمز الباركود للحصول على معلومات المنتج."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1192,8 +1682,15 @@
       }
     },
     "onboarding.tuto.item0.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح منتج"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1209,8 +1706,15 @@
       }
     },
     "onboarding.tuto.item1.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "احصل على تقييم لمحتوى الملح في المنتج."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1226,8 +1730,15 @@
       }
     },
     "onboarding.tuto.item1.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حلل محتوى الملح"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1243,8 +1754,15 @@
       }
     },
     "onboarding.tuto.item2.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اكتشف ما إذا كان المنتج يحتوي على كمية زائدة من الملح أو الكمية المناسبة."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1260,8 +1778,15 @@
       }
     },
     "onboarding.tuto.item2.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قيّم محتوى الملح"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1277,8 +1802,15 @@
       }
     },
     "result.product.button.rescan" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح منتج آخر"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1294,8 +1826,15 @@
       }
     },
     "result.product.error" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خطأ: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1311,8 +1850,15 @@
       }
     },
     "result.product.highEval" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كمية كبيرة جدًا من الملح"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1328,8 +1874,15 @@
       }
     },
     "result.product.loading" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جارٍ التحميل…"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1345,8 +1898,15 @@
       }
     },
     "result.product.lowEval" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كمية قليلة من الملح"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1362,8 +1922,15 @@
       }
     },
     "result.product.mediumEval" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محتوى ملح معتدل"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1379,8 +1946,15 @@
       }
     },
     "result.product.name" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المنتج الممسوح:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1396,8 +1970,15 @@
       }
     },
     "result.product.saltEval" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقييم الملح: %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1413,8 +1994,15 @@
       }
     },
     "result.product.sodiumPer100g" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الصوديوم لكل 100 غرام: %@ غرام"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1430,8 +2018,15 @@
       }
     },
     "result.product.unknown" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات الصوديوم غير متوفرة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1447,8 +2042,15 @@
       }
     },
     "settings.appearance.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المظهر"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1464,8 +2066,15 @@
       }
     },
     "settings.appVersion" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0.1.0"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1481,8 +2090,15 @@
       }
     },
     "settings.credit.visit.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "زيارة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1498,8 +2114,15 @@
       }
     },
     "settings.section.appVersion.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إصدار التطبيق"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1515,8 +2138,15 @@
       }
     },
     "settings.section.author.name" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أشرف الطرابلسي"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1532,8 +2162,15 @@
       }
     },
     "settings.section.contactUs.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتصل بنا"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1549,8 +2186,15 @@
       }
     },
     "settings.section.credits.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الشكر والتقدير"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1566,8 +2210,15 @@
       }
     },
     "settings.section.FAQ.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأسئلة الشائعة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1583,8 +2234,15 @@
       }
     },
     "settings.section.general.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عام"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1600,8 +2258,15 @@
       }
     },
     "settings.section.help.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مساعدة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1617,8 +2282,15 @@
       }
     },
     "settings.section.information.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1634,8 +2306,15 @@
       }
     },
     "settings.section.madeAuthor.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صُنع مع ❤️ بواسطة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1651,8 +2330,15 @@
       }
     },
     "settings.section.source1.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Food Facts"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1668,8 +2354,15 @@
       }
     },
     "settings.section.source2.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Illustrations by unDraw"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1685,8 +2378,15 @@
       }
     },
     "settings.section.termsAndPolicy.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الشروط وسياسة الخصوصية"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1702,8 +2402,15 @@
       }
     },
     "termsAndPrivacy.privacy.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آخر تحديث: 1 يناير 2025\n\n1. المعلومات التي نجمعها\nلا يقوم SaltScan بجمع أي بيانات شخصية. يستخدم التطبيق كاميرا جهازك فقط لمسح المنتجات الغذائية. يتم طلب الوصول إلى الكاميرا فقط من أجل هذه الوظيفة. لا نقوم بتخزين أو إرسال أي بيانات متعلقة بالمنتجات الممسوحة أو استخدام الكاميرا.\n\n2.استخدام المعلومات\nيتم استخدام الوصول إلى الكاميرا فقط لتمكين وظيفة المسح في التطبيق. لا يتم جمع أو استخدام أي بيانات شخصية أو بيانات تتبع.\n\n3.مشاركة المعلومات\nنحن لا نشارك أي معلومات شخصية مع أطراف ثالثة. لا يتم إرسال أي بيانات متعلقة بمسح المنتجات إلى الخوادم أو مشاركتها مع شركات طرف ثالث.\n\t\n4.الأمان\nعلى الرغم من أننا لا نجمع بيانات شخصية، فإننا نتخذ تدابير معقولة لتأمين الوصول إلى الكاميرا والتطبيق ككل. ومع ذلك، لا يوجد نظام آمن 100%، ولا يمكننا ضمان الأمان المطلق.\n\n5.حقوقك\nنظرًا لأننا لا نجمع بيانات شخصية، فلا حاجة لطلب الوصول أو تعديل معلوماتك. يمكنك تعطيل الوصول إلى الكاميرا عبر إعدادات جهازك إذا اخترت عدم استخدامها.\n\t\n6.التغييرات في سياسة الخصوصية\nيحتفظ SaltScan بالحق في تعديل هذه السياسة في أي وقت. ستُنشَر التغييرات في التطبيق وستدخل حيز التنفيذ فور نشرها.\n\t\n7.الاتصال\nإذا كانت لديك أي أسئلة بخصوص سياسة الخصوصية هذه، يرجى الاتصال بنا عبر [اتصل بنا]."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1719,8 +2426,15 @@
       }
     },
     "termsAndPrivacy.privacy.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سياسة الخصوصية"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1736,8 +2450,15 @@
       }
     },
     "termsAndPrivacy.terms.description" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آخر تحديث: 1 يناير 2025\n\n1. المقدمة\nمرحبًا بكم في SaltScan! تحكم هذه الشروط والأحكام وصولك واستخدامك لتطبيق SaltScan (\"التطبيق\"). باستخدامك للتطبيق، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على هذه الشروط، يُرجى عدم استخدام التطبيق.\n\n2. استخدام التطبيق\nيسمح لك SaltScan بمسح المنتجات الغذائية وعرض المعلومات المتعلقة بالملح والتغذية. توافق على عدم استخدام التطبيق لأغراض غير قانونية أو غير مصرح بها.\n\n3. حقوق الملكية الفكرية\nجميع المحتويات، بما في ذلك على سبيل المثال لا الحصر النصوص والرسوم البيانية والصور والشعارات المستخدمة في التطبيق، هي ملكية حصرية لـ SaltScan أو المرخصين لها. لا يجوز لك إعادة إنتاج أو توزيع أو تعديل هذا المحتوى دون إذن مسبق.\n\n4. تحديد المسؤولية\nيتم تقديم التطبيق \"كما هو\". لا تضمن SaltScan أن يكون التطبيق خالياً من الأخطاء أو الفيروسات أو أي أعطال تقنية أخرى. نحن غير مسؤولين عن أي أضرار مباشرة أو غير مباشرة أو خاصة أو تبعية تنشأ عن استخدامك للتطبيق.\n\n5. تغييرات على الشروط\nنحتفظ بالحق في تعديل هذه الشروط والأحكام في أي وقت. ستكون أي تغييرات سارية عند نشرها في التطبيق.\n\n6. الاتصال\nإذا كانت لديك أي أسئلة تتعلق بهذه الشروط والأحكام، يرجى الاتصال بنا على [اتصل بنا]."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1753,8 +2474,15 @@
       }
     },
     "termsAndPrivacy.terms.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شروط الخدمة"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1770,8 +2498,15 @@
       }
     },
     "termsAndPrivacy.title" : {
+      "comment" : "",
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سياسة الشروط والخصوصية"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
