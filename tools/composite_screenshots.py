@@ -23,7 +23,7 @@ from bidi.algorithm import get_display
 
 # ----- Constants ------------------------------------------------------------
 
-W, H = 1320, 2868
+W, H = 1284, 2778   # iPhone 6.7" portrait — App Store Connect required size
 REPO = Path(__file__).resolve().parent.parent
 RAW_DIR = REPO / "marketing/raw"
 OUT_DIR = REPO / "marketing/screenshots"
