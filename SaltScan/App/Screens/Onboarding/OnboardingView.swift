@@ -39,13 +39,13 @@ struct OnboardingView: View {
             
             Spacer()
             
-            PrimaryButton(
-                content: "onboarding.button.start",
-                action: {
-                    buttonTapImpactFeedback.impactOccurred()
-                    dismiss()
-                }
-            )
+            SSButton(
+                title: "onboarding.button.start",
+                icon: "arrow.right.circle.fill"
+            ) {
+                buttonTapImpactFeedback.impactOccurred()
+                dismiss()
+            }
             .padding()
         }
         .onAppear {

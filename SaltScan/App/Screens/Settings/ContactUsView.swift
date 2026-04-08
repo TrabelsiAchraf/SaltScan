@@ -67,20 +67,19 @@ struct ContactUsView: View {
                     Text("contactUs.section.title")
                 } footer: {
                     VStack {
-                        PrimaryButton(
-                            content: "contactUs.button.send",
-                            color: tellUsTextField.isEmpty ? .gray : .blue,
-                            action: {
-                                if canSendMailToday() {
-                                    showingMailView = true
-                                    incrementMailCount()
-                                } else {
-                                    showingLimitReachedAlert = true
-                                }
+                        SSButton(
+                            title: "contactUs.button.send",
+                            icon: "paperplane.fill",
+                            isEnabled: !tellUsTextField.isEmpty
+                        ) {
+                            if canSendMailToday() {
+                                showingMailView = true
+                                incrementMailCount()
+                            } else {
+                                showingLimitReachedAlert = true
                             }
-                        )
+                        }
                         .padding()
-                        .disabled(tellUsTextField.isEmpty)
                     }
                     .frame(width: UIScreen.main.bounds.width, alignment: .center)
                 }

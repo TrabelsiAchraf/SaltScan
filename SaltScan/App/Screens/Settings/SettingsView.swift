@@ -9,7 +9,8 @@ import SwiftUI
 struct SettingsView: View {
     private let appearances = [Appearance.system, Appearance.dark, Appearance.light]
     @AppStorage("isDarkMode") private var selectedAppearance: Appearance = .system
-    
+    @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
+
     var body: some View {
         Form {
             Section {
@@ -18,8 +19,21 @@ struct SettingsView: View {
                         Text($0.text)
                     }
                 }
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("settings.goal.title")
+                        Spacer()
+                        Text(String(format: "%.1f g", goalGrams))
+                            .foregroundStyle(Color.ssPrimary)
+                            .monospacedDigit()
+                    }
+                    Slider(value: $goalGrams, in: 2...10, step: 0.5)
+                        .tint(Color.ssPrimary)
+                }
             } header: {
                 Text("settings.section.general.title")
+            } footer: {
+                Text("settings.goal.footer")
             }
             
             Section {

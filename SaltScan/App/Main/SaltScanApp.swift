@@ -6,22 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 import GoogleMobileAds
 
 @main
 struct SaltScanApp: App {
     @AppStorage("isDarkMode") private var appearance: Appearance = .system
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+
     init() {
         setupAdmob()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             MainView()
                 .preferredColorScheme(appearance.value)
         }
+        .modelContainer(SaltScanModelContainer.shared)
     }
     
     // MARK: - Private
