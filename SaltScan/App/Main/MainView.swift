@@ -11,19 +11,34 @@ struct MainView: View {
     @State private var showScanner: Bool = false
     @State private var selectedTab: Tab = .home
 
-    enum Tab: Hashable { case home, history, settings }
+    enum Tab: Hashable { case home, scan, history, settings }
+
+    /// Tab binding that intercepts taps on the Scan tab: instead of switching
+    /// to it, we present the camera modal and keep the previously-selected
+    /// tab active so dismissing the scanner returns the user where they were.
+    private var tabBinding: Binding<Tab> {
+        Binding(
+            get: { selectedTab },
+            set: { newValue in
+                if newValue == .scan {
+                    showScanner = true
+                } else {
+                    selectedTab = newValue
+                }
+            }
+        )
+    }
 
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: tabBinding) {
             NavigationStack { HomeView(onScanTapped: { showScanner = true }) }
                 .tabItem { Label("main.tab.home", systemImage: "house.fill") }
                 .tag(Tab.home)
 
-            // Central "Scan" tab — selecting it opens the camera modal.
+            // Placeholder — never actually shown because tabBinding intercepts.
             Color.clear
                 .tabItem { Label("main.tab.scan", systemImage: "barcode.viewfinder") }
-                .tag(Tab.home) // keeps selection on Home after modal closes
-                .onAppear { showScanner = true }
+                .tag(Tab.scan)
 
             HistoryView()
                 .tabItem { Label("main.tab.history", systemImage: "clock.arrow.circlepath") }

@@ -20,13 +20,17 @@ struct HomeView: View {
         sort: [SortDescriptor(\ScanEntry.scannedAt, order: .reverse)]
     ) private var allScans: [ScanEntry]
 
-    @Query private var allIntakes: [DailyIntake]
+    // Query individual lines (not the parent bucket) so the @Query
+    // invalidates as soon as a new portion is added.
+    @Query private var allLines: [IntakeLine]
 
     private let timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
 
     private var todaySalt: Double {
-        let today = Calendar.current.startOfDay(for: .now)
-        return allIntakes.first { $0.day == today }?.totalSaltGrams ?? 0
+        let cal = Calendar.current
+        return allLines
+            .filter { cal.isDateInToday($0.addedAt) }
+            .reduce(0) { $0 + $1.saltGrams }
     }
 
     private var latestScans: [ScanEntry] { Array(allScans.prefix(3)) }

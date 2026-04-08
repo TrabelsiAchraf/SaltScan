@@ -10,22 +10,55 @@ import SwiftUI
 import AudioToolbox
 import AVFoundation
 
+/// Wrapper used as the sheet item — driving the result sheet by item rather
+/// than a separate `Bool` + optional barcode eliminates the one-frame race
+/// where the sheet's body would render with `scannedCode == nil` on the very
+/// first presentation.
+private struct ScannedBarcode: Identifiable, Equatable {
+    let id = UUID()
+    let value: String
+}
+
+/// Tiny thread-safe one-shot latch backing the capture de-dupe.
+private final class AtomicBool {
+    private var value: Bool
+    private let lock = NSLock()
+    init(_ value: Bool) { self.value = value }
+    func compareAndSet(expected: Bool, new: Bool) -> Bool {
+        lock.lock(); defer { lock.unlock() }
+        guard value == expected else { return false }
+        value = new
+        return true
+    }
+    func set(_ new: Bool) { lock.lock(); value = new; lock.unlock() }
+}
+
 struct ProductScannerView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var scannedCode: String?
+    @State private var scanned: ScannedBarcode?
     @State private var captureSession = AVCaptureSession()
     @State private var laserOffset: CGFloat = -90
-    @State private var showDetail: Bool = false
+    @State private var didCapture = AtomicBool(false)
     private let haptic = UIImpactFeedbackGenerator(style: .medium)
 
     var body: some View {
         ZStack {
             ScannerView(captureSession: $captureSession) { barcode in
+                // AVFoundation can deliver several metadata callbacks before
+                // the capture session actually stops. Use an atomic flag to
+                // accept exactly one barcode per scan session, otherwise the
+                // sheet item churns and visibly re-presents.
+                guard didCapture.compareAndSet(expected: false, new: true) else { return }
+
+                let session = captureSession
+                DispatchQueue.global(qos: .userInitiated).async {
+                    session.stopRunning()
+                }
                 AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {
-                    haptic.impactOccurred()
-                    scannedCode = barcode
-                    showDetail = true
-                    captureSession.stopRunning()
+                    Task { @MainActor in
+                        haptic.impactOccurred()
+                        scanned = ScannedBarcode(value: barcode)
+                    }
                 }
             }
             .edgesIgnoringSafeArea(.all)
@@ -51,21 +84,19 @@ struct ProductScannerView: View {
                     .padding(.bottom, SSSpacing.xxl)
             }
         }
-        .sheet(isPresented: $showDetail, onDismiss: resumeCapture) {
-            if let scannedCode {
-                NavigationStack {
-                    ProductDetailView(barcode: scannedCode)
-                        .toolbar {
-                            ToolbarItem(placement: .topBarTrailing) {
-                                Button("result.product.button.rescan") {
-                                    showDetail = false
-                                }
+        .sheet(item: $scanned, onDismiss: resumeCapture) { item in
+            NavigationStack {
+                ProductDetailView(barcode: item.value)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button("result.product.button.rescan") {
+                                scanned = nil
                             }
                         }
-                }
-                .presentationDetents([.large, .medium])
-                .presentationDragIndicator(.visible)
+                    }
             }
+            .presentationDetents([.large, .medium])
+            .presentationDragIndicator(.visible)
         }
         .onAppear {
             haptic.prepare()
@@ -124,7 +155,8 @@ struct ProductScannerView: View {
     }
 
     private func resumeCapture() {
-        scannedCode = nil
+        scanned = nil
+        didCapture.set(false)
         DispatchQueue.global(qos: .background).async {
             captureSession.startRunning()
         }

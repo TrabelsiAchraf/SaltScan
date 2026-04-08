@@ -31,15 +31,19 @@ struct ProductDetailView: View {
                     nutrientsSection(entry)
                     tagsSection(entry)
                     actionsSection(entry)
-                } else if viewModel.isLoading {
-                    ProgressView("result.product.loading")
-                        .padding(.vertical, SSSpacing.xxl)
                 } else if viewModel.errorMessage != nil {
                     SSEmptyState(
                         icon: "exclamationmark.triangle",
                         title: "result.product.unknown",
                         message: "result.product.unknown"
                     )
+                } else {
+                    // Default fallback (also covers the brief moment between
+                    // view appearance and the .task firing) so the sheet is
+                    // never visually empty.
+                    ProgressView("result.product.loading")
+                        .padding(.vertical, SSSpacing.xxl)
+                        .frame(maxWidth: .infinity)
                 }
             }
             .padding(SSSpacing.md)
@@ -343,9 +347,16 @@ struct AddToJournalSheet: View {
                 SSButton(title: "journal.addPortion", icon: "checkmark.circle.fill") {
                     let bucket = DailyIntake.bucket(for: .now, in: context)
                     let line = IntakeLine(scan: scan, grams: grams)
-                    bucket.lines.append(line)
+                    // Insert first, then explicitly establish the relationship.
+                    // Going through `bucket.lines.append` alone wasn't always
+                    // notifying @Query observers on the parent screens.
                     context.insert(line)
-                    try? context.save()
+                    line.intake = bucket
+                    do {
+                        try context.save()
+                    } catch {
+                        assertionFailure("Failed to save intake: \(error)")
+                    }
                     dismiss()
                 }
             }
