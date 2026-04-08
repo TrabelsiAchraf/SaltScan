@@ -16,6 +16,13 @@ struct SaltScanApp: App {
 
     init() {
         setupAdmob()
+#if DEBUG
+        // Seed deterministic demo data on launch when running under the
+        // marketing-screenshot harness (tools/take_screenshots.sh).
+        Task { @MainActor in
+            ScreenshotMode.seedIfNeeded(SaltScanModelContainer.shared)
+        }
+#endif
     }
 
     var body: some Scene {
