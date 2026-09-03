@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import GoogleMobileAds
 
 @main
 struct SaltScanApp: App {
@@ -15,7 +14,6 @@ struct SaltScanApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     init() {
-        setupAdmob()
 #if DEBUG
         // Seed deterministic demo data on launch when running under the
         // marketing-screenshot harness (tools/take_screenshots.sh).
@@ -29,15 +27,20 @@ struct SaltScanApp: App {
         WindowGroup {
             MainView()
                 .preferredColorScheme(appearance.value)
+                .onAppear(perform: startAds)
         }
         .modelContainer(SaltScanModelContainer.shared)
     }
-    
+
     // MARK: - Private
-    
-    private func setupAdmob() {
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "4812cfe835374af410fe16b30d8b1039" ]
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+
+    /// Ads start only after the consent flow has run (no-op outside GDPR
+    /// regions). Skipped entirely while capturing marketing screenshots.
+    private func startAds() {
+#if DEBUG
+        if ScreenshotMode.isActive { return }
+#endif
+        AdsConsentManager.shared.gatherConsentIfNeeded()
     }
 }
 

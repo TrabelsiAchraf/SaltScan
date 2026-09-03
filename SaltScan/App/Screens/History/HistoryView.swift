@@ -2,8 +2,9 @@
 //  HistoryView.swift
 //  SaltScan
 //
-//  Lists past scans grouped by day, with search, favorites filter and
-//  swipe-to-delete / swipe-to-favorite actions.
+//  Lists past scans grouped by day, with search, favorites filter,
+//  swipe-to-delete / swipe-to-favorite actions and a compare mode that
+//  selects 2 to 4 products for a side-by-side ComparisonView.
 //
 
 import SwiftUI
@@ -16,6 +17,13 @@ struct HistoryView: View {
 
     @State private var searchText: String = ""
     @State private var showFavoritesOnly: Bool = false
+    @State private var editMode: EditMode = .inactive
+    @State private var selection = Set<PersistentIdentifier>()
+    @State private var showCompare = false
+
+    private var isComparing: Bool { editMode == .active }
+    private var selectedEntries: [ScanEntry] { allEntries.filter { selection.contains($0.id) } }
+    private var canCompare: Bool { (2...4).contains(selection.count) }
 
     var body: some View {
         NavigationStack {
@@ -27,7 +35,7 @@ struct HistoryView: View {
                         message: "history.empty.message"
                     )
                 } else {
-                    List {
+                    List(selection: $selection) {
                         ForEach(groupedByDay, id: \.0) { day, entries in
                             Section(header: Text(dayLabel(day)).font(SSFont.subheadline().weight(.semibold))) {
                                 ForEach(entries) { entry in
@@ -63,10 +71,24 @@ struct HistoryView: View {
                     .listStyle(.insetGrouped)
                     .scrollContentBackground(.hidden)
                     .background(Color.ssGroupedBackground)
+                    .environment(\.editMode, $editMode)
                 }
             }
             .navigationTitle("history.title")
             .toolbar {
+                if allEntries.count >= 2 {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            toggleCompareMode()
+                        } label: {
+                            if isComparing {
+                                Text("history.compare.cancel")
+                            } else {
+                                Label("history.compare.button", systemImage: "rectangle.split.2x1")
+                            }
+                        }
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showFavoritesOnly.toggle()
@@ -77,6 +99,51 @@ struct HistoryView: View {
                 }
             }
             .searchable(text: $searchText, prompt: Text("history.search.prompt"))
+            .safeAreaInset(edge: .bottom) {
+                if isComparing {
+                    compareBar
+                }
+            }
+            .navigationDestination(isPresented: $showCompare) {
+                ComparisonView(entries: selectedEntries)
+            }
+        }
+    }
+
+    // MARK: - Compare mode
+
+    private var compareBar: some View {
+        VStack(spacing: SSSpacing.xs) {
+            Group {
+                if canCompare {
+                    Text(String(format: "history.compare.count".localize, selection.count))
+                } else {
+                    Text("history.compare.select.hint")
+                }
+            }
+            .font(SSFont.caption())
+            .foregroundStyle(Color.ssTextSecondary)
+
+            SSButton(
+                title: "history.compare.action",
+                icon: "rectangle.split.2x1",
+                isEnabled: canCompare
+            ) {
+                showCompare = true
+            }
+        }
+        .padding(SSSpacing.md)
+        .background(.bar)
+    }
+
+    private func toggleCompareMode() {
+        withAnimation {
+            if isComparing {
+                editMode = .inactive
+                selection.removeAll()
+            } else {
+                editMode = .active
+            }
         }
     }
 

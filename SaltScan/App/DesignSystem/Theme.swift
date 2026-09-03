@@ -122,10 +122,12 @@ enum SSSeverity {
         }
     }
 
-    /// Classify from salt (g / 100g), per standard food labelling thresholds.
+    /// Classify from salt (g / 100g). Thresholds follow the UK front-of-pack
+    /// traffic-light scheme and the EU "low salt" claim: up to 0.3 g is low,
+    /// 0.3 to 1.5 g is medium, above 1.5 g is high.
     static func fromSaltPer100g(_ saltG: Double) -> SSSeverity {
         if saltG > 1.5 { .high }
-        else if saltG >= 0.5 { .medium }
+        else if saltG > 0.3 { .medium }
         else { .low }
     }
 

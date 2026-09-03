@@ -4,6 +4,7 @@
 //
 //  Refreshed scanner overlay: animated laser line, cut-out viewfinder, and a
 //  detent-aware bottom sheet that surfaces the refreshed ProductDetailView.
+//  A "search by name" shortcut covers products without a readable barcode.
 //
 
 import SwiftUI
@@ -36,6 +37,7 @@ private final class AtomicBool {
 struct ProductScannerView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var scanned: ScannedBarcode?
+    @State private var showSearch = false
     @State private var captureSession = AVCaptureSession()
     @State private var laserOffset: CGFloat = -90
     @State private var didCapture = AtomicBool(false)
@@ -81,7 +83,12 @@ struct ProductScannerView: View {
                     .padding(.vertical, SSSpacing.xs)
                     .background(.black.opacity(0.45))
                     .clipShape(Capsule())
+                    .padding(.bottom, SSSpacing.sm)
+                searchByNameButton
                     .padding(.bottom, SSSpacing.xxl)
+            }
+            .sheet(isPresented: $showSearch) {
+                ProductSearchView()
             }
         }
         .sheet(item: $scanned, onDismiss: resumeCapture) { item in
@@ -151,6 +158,21 @@ struct ProductScannerView: View {
                 .padding(SSSpacing.sm)
                 .background(.black.opacity(0.4))
                 .clipShape(Circle())
+        }
+    }
+
+    private var searchByNameButton: some View {
+        Button {
+            haptic.impactOccurred()
+            showSearch = true
+        } label: {
+            Label("scanner.searchByName", systemImage: "magnifyingglass")
+                .font(SSFont.subheadline().weight(.semibold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, SSSpacing.md)
+                .padding(.vertical, SSSpacing.xs)
+                .background(.white.opacity(0.18))
+                .clipShape(Capsule())
         }
     }
 

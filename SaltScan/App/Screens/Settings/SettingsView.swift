@@ -10,6 +10,18 @@ struct SettingsView: View {
     private let appearances = [Appearance.system, Appearance.dark, Appearance.light]
     @AppStorage("isDarkMode") private var selectedAppearance: Appearance = .system
     @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
+    @ObservedObject private var adsConsent = AdsConsentManager.shared
+
+    private static let appStoreID = "6740041173"
+    private let reviewURL = URL(string: "https://apps.apple.com/app/id\(SettingsView.appStoreID)?action=write-review")!
+
+    /// Marketing version and build read from the bundle, so Settings can never
+    /// drift from what App Store Connect shows.
+    private var versionString: String {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—"
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
+        return build.isEmpty ? version : "\(version) (\(build))"
+    }
 
     var body: some View {
         Form {
@@ -35,14 +47,16 @@ struct SettingsView: View {
             } footer: {
                 Text("settings.goal.footer")
             }
-            
+
             Section {
                 HStack {
                     Text("settings.section.appVersion.title")
                     Spacer()
-                    Text("settings.appVersion")
+                    Text(versionString)
+                        .foregroundStyle(Color.ssTextSecondary)
+                        .monospacedDigit()
                 }
-                
+
                 HStack {
                     Text("settings.section.madeAuthor.title")
                     Button {
@@ -51,21 +65,33 @@ struct SettingsView: View {
                         Text("settings.section.author.name")
                     }
                 }
-                
+
+                Link(destination: reviewURL) {
+                    Label("settings.section.rate.title", systemImage: "star.fill")
+                }
+
                 NavigationLink("settings.section.termsAndPolicy.title") {
                     TermsAndPrivacyView()
+                }
+
+                if adsConsent.isPrivacyOptionsRequired {
+                    Button {
+                        adsConsent.presentPrivacyOptions()
+                    } label: {
+                        Label("settings.section.privacyOptions.title", systemImage: "hand.raised.fill")
+                    }
                 }
             } header: {
                 Text("settings.section.information.title")
             }
-            
+
             Section {
                 HStack {
                     Text("settings.section.source1.title")
                     Spacer()
                     Link("settings.credit.visit.title", destination: URL(string: "https://fr.openfoodfacts.org")!)
                 }
-                
+
                 HStack {
                     Text("settings.section.source2.title")
                     Spacer()
@@ -74,12 +100,12 @@ struct SettingsView: View {
             } header: {
                 Text("settings.section.credits.title")
             }
-            
+
             Section {
                 NavigationLink("settings.section.FAQ.title") {
                     FAQView()
                 }
-                
+
                 NavigationLink("settings.section.contactUs.title") {
                     ContactUsView()
                 }

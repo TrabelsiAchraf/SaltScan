@@ -20,7 +20,10 @@ enum ScreenshotMode {
             ProcessInfo.processInfo.arguments.contains("YES")
     }
 
-    /// Where to navigate after launch: "home" | "history" | "detail" | "scanner" | "settings".
+    /// Barcodes of the seeded products used by the "compare" route, in display order.
+    static let compareBarcodes = ["0123456000004", "0123456000002", "0123456000003"]
+
+    /// Where to navigate after launch: "home" | "history" | "detail" | "scanner" | "settings" | "compare".
     static var initialRoute: String {
         if let i = ProcessInfo.processInfo.arguments.firstIndex(of: "-screenshotInitialRoute"),
            i + 1 < ProcessInfo.processInfo.arguments.count {

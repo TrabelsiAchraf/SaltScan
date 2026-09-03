@@ -12,6 +12,8 @@ struct MainView: View {
     @State private var showScanner: Bool = false
     @State private var selectedTab: Tab = .home
     @State private var screenshotDetailEntry: ScanEntry?
+    @State private var screenshotCompareEntries: [ScanEntry] = []
+    @State private var showScreenshotCompare = false
 
     enum Tab: Hashable { case home, scan, history, settings }
 
@@ -62,6 +64,11 @@ struct MainView: View {
                 ProductDetailView(barcode: entry.barcode, preloadedEntry: entry)
             }
         }
+        .fullScreenCover(isPresented: $showScreenshotCompare) {
+            NavigationStack {
+                ComparisonView(entries: screenshotCompareEntries)
+            }
+        }
         .onAppear {
             guard ScreenshotMode.isActive else { return }
             // Defer one runloop tick so the seed in SaltScanApp.init has time
@@ -86,6 +93,19 @@ struct MainView: View {
             )
             if let entry = try? context.fetch(descriptor).first {
                 screenshotDetailEntry = entry
+            }
+        case "compare":
+            // Side-by-side of three seeded products with contrasting salt levels.
+            selectedTab = .history
+            let codes = ScreenshotMode.compareBarcodes
+            let descriptor = FetchDescriptor<ScanEntry>(
+                predicate: #Predicate { codes.contains($0.barcode) }
+            )
+            if let entries = try? context.fetch(descriptor), entries.count >= 2 {
+                screenshotCompareEntries = entries.sorted {
+                    codes.firstIndex(of: $0.barcode) ?? 0 < codes.firstIndex(of: $1.barcode) ?? 0
+                }
+                showScreenshotCompare = true
             }
         default:
             selectedTab = .home

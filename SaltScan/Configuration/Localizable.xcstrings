@@ -297,19 +297,19 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إذا لم يتم العثور على منتج في قاعدة البيانات الخاصة بنا، يمكنك إدخال المعلومات يدويًا. نحن نقوم بتحديث قاعدة البيانات باستمرار لإضافة المزيد من المنتجات."
+            "value": "إذا لم يتم العثور على منتج، يمكنك البحث عنه بالاسم من الشاشة الرئيسية، أو إضافته إلى Open Food Facts، قاعدة البيانات المفتوحة التي يعتمد عليها Salt Scan. تظهر المنتجات الجديدة عادةً خلال يوم."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If a product is not found in our database, you can manually enter the information. We are continuously updating the database to include more products."
+            "value": "If a product is not found, you can search it by name from the Home screen, or add it to Open Food Facts, the open database Salt Scan relies on. New products usually appear within a day."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si un produit n’est pas trouvé dans notre base de données, vous pouvez entrer manuellement les informations. Nous mettons constamment à jour la base de données pour inclure plus de produits."
+            "value": "Si un produit n'est pas trouvé, vous pouvez le rechercher par son nom depuis l'accueil, ou l'ajouter sur Open Food Facts, la base ouverte utilisée par Salt Scan. Les nouveaux produits apparaissent en général sous un jour."
           }
         }
       }
@@ -393,19 +393,19 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "حالياً، SaltScan متاحة باللغتين [الإنجليزية والفرنسية]، ونحن نعمل على إضافة المزيد من اللغات في المستقبل."
+            "value": "يتوفر Salt Scan باللغات الإنجليزية والفرنسية والعربية، ويتبع لغة جهازك."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Currently, SaltScan is available in [English & French], and we are working on adding more languages in the future."
+            "value": "Salt Scan is available in English, French and Arabic, and follows your device language."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Actuellement, SaltScan est disponible en [Anglais et Français], et nous travaillons à ajouter d’autres langues à l’avenir."
+            "value": "Salt Scan est disponible en anglais, français et arabe, et suit la langue de votre appareil."
           }
         }
       }
@@ -2043,6 +2043,126 @@
         }
       }
     },
+    "history.compare.action": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مقارنة المحدد"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compare selected"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparer la sélection"
+          }
+        }
+      }
+    },
+    "history.compare.button": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مقارنة"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compare"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comparer"
+          }
+        }
+      }
+    },
+    "history.compare.cancel": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminé"
+          }
+        }
+      }
+    },
+    "history.compare.count": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d محددة"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d selected"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d sélectionnés"
+          }
+        }
+      }
+    },
+    "history.compare.select.hint": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر من 2 إلى 4 منتجات للمقارنة"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select 2 to 4 products to compare"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sélectionnez 2 à 4 produits à comparer"
+          }
+        }
+      }
+    },
     "history.day.today": {
       "extractionState": "manual",
       "localizations": {
@@ -2433,6 +2553,30 @@
           "stringUnit": {
             "state": "translated",
             "value": "Scannez des produits pour connaître leur teneur en sel."
+          }
+        }
+      }
+    },
+    "home.search.button": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "البحث بالاسم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search by name"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechercher par nom"
           }
         }
       }
@@ -2860,6 +3004,54 @@
         }
       }
     },
+    "result.product.action.addToOFF": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إضافته إلى Open Food Facts"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add it on Open Food Facts"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'ajouter sur Open Food Facts"
+          }
+        }
+      }
+    },
+    "result.product.action.searchByName": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "البحث بالاسم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search by name"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechercher par nom"
+          }
+        }
+      }
+    },
     "result.product.button.rescan": {
       "comment": "",
       "extractionState": "manual",
@@ -3028,6 +3220,54 @@
         }
       }
     },
+    "result.product.notFound.message": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الرمز الشريطي غير موجود في Open Food Facts بعد، أو فشل الاتصال. ابحث عن المنتج بالاسم، أو أضفه إلى قاعدة البيانات ليستفيد الجميع."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This barcode isn't in Open Food Facts yet, or the connection failed. Search the product by name, or add it to the database so everyone benefits."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce code-barres n'est pas encore dans Open Food Facts, ou la connexion a échoué. Recherchez le produit par son nom, ou ajoutez-le à la base pour que tout le monde en profite."
+          }
+        }
+      }
+    },
+    "result.product.notFound.title": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنتج غير موجود"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Product not found"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Produit introuvable"
+          }
+        }
+      }
+    },
     "result.product.saltEval": {
       "comment": "",
       "extractionState": "manual",
@@ -3123,6 +3363,30 @@
         }
       }
     },
+    "scanner.searchByName": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد رمز شريطي؟ ابحث بالاسم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No barcode? Search by name"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas de code-barres ? Rechercher par nom"
+          }
+        }
+      }
+    },
     "search.empty.message": {
       "extractionState": "manual",
       "localizations": {
@@ -3211,30 +3475,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "بحث"
-          }
-        }
-      }
-    },
-    "settings.appVersion": {
-      "comment": "",
-      "extractionState": "manual",
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0.1.0"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0.1.0"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "0.1.0"
           }
         }
       }
@@ -3545,6 +3785,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Made with ❤️ by"
+          }
+        }
+      }
+    },
+    "settings.section.privacyOptions.title": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خيارات خصوصية الإعلانات"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad privacy choices"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choix de confidentialité (publicité)"
+          }
+        }
+      }
+    },
+    "settings.section.rate.title": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قيّم Salt Scan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate Salt Scan"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noter Salt Scan"
           }
         }
       }

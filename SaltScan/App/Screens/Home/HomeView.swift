@@ -13,6 +13,7 @@ struct HomeView: View {
     @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
     @Environment(\.modelContext) private var context
     @State private var showOnboarding = false
+    @State private var showSearch = false
     @State private var currentIndex = 0
     @StateObject private var articlesViewModel = ArticleViewModel()
 
@@ -51,7 +52,19 @@ struct HomeView: View {
         .background(Color.ssGroupedBackground)
         .navigationTitle("main.title")
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showSearch = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(Color.ssPrimary)
+                }
+                .accessibilityLabel(Text("home.search.button"))
+            }
+        }
         .sheet(isPresented: $showOnboarding) { OnboardingView() }
+        .sheet(isPresented: $showSearch) { ProductSearchView() }
         .onAppear {
             setHasSeenOnboardingFlag()
             articlesViewModel.loadArticles()
@@ -91,6 +104,12 @@ struct HomeView: View {
                         icon: "barcode.viewfinder",
                         size: .compact
                     ) { onScanTapped() }
+                    SSButton(
+                        title: "home.search.button",
+                        icon: "magnifyingglass",
+                        style: .ghost,
+                        size: .compact
+                    ) { showSearch = true }
                 }
             }
         }

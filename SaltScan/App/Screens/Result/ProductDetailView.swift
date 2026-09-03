@@ -5,10 +5,13 @@
 //  Rich product detail shown after a scan or from the History tab.
 //  Features: hero image, nutriscore, severity badge, nutrient grid,
 //  allergens/additives, favorite toggle, add-to-journal, share.
+//  Also the place where we ask for an App Store rating, after a positive
+//  moment (successful scan or journal entry), gated by ReviewGate.
 //
 
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct ProductDetailView: View {
     let barcode: String
@@ -17,10 +20,16 @@ struct ProductDetailView: View {
 
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.requestReview) private var requestReview
     @StateObject private var viewModel = ResultViewModel()
     @State private var showJournalSheet = false
+    @State private var showSearch = false
 
     private var entry: ScanEntry? { preloadedEntry ?? viewModel.cachedEntry }
+
+    private var addToOpenFoodFactsURL: URL? {
+        URL(string: "https://world.openfoodfacts.org/cgi/product.pl?type=add&code=\(barcode)")
+    }
 
     var body: some View {
         ScrollView {
@@ -32,11 +41,7 @@ struct ProductDetailView: View {
                     tagsSection(entry)
                     actionsSection(entry)
                 } else if viewModel.errorMessage != nil {
-                    SSEmptyState(
-                        icon: "exclamationmark.triangle",
-                        title: "result.product.unknown",
-                        message: "result.product.unknown"
-                    )
+                    notFoundSection
                 } else {
                     // Default fallback (also covers the brief moment between
                     // view appearance and the .task firing) so the sheet is
@@ -52,15 +57,23 @@ struct ProductDetailView: View {
         .navigationTitle("result.product.name")
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            if preloadedEntry == nil {
-                await viewModel.fetchProduct(scannedCode: barcode, context: context)
+            guard preloadedEntry == nil else { return }
+            await viewModel.fetchProduct(scannedCode: barcode, context: context)
+            if viewModel.cachedEntry != nil {
+                ReviewGate.recordSuccessfulScan()
+                // Let the result land before the system rating sheet appears.
+                try? await Task.sleep(for: .seconds(2))
+                maybeRequestReview()
             }
         }
-        .sheet(isPresented: $showJournalSheet) {
+        .sheet(isPresented: $showJournalSheet, onDismiss: maybeRequestReview) {
             if let entry {
                 AddToJournalSheet(scan: entry)
                     .presentationDetents([.medium])
             }
+        }
+        .sheet(isPresented: $showSearch) {
+            ProductSearchView()
         }
     }
 
@@ -216,23 +229,53 @@ struct ProductDetailView: View {
                     item: shareText(entry),
                     preview: SharePreview(entry.productName)
                 ) {
-                    Label("detail.action.share", systemImage: "square.and.arrow.up")
-                        .font(SSFont.subheadline().weight(.semibold))
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, SSSpacing.md)
-                        .background(Color.ssSurface)
-                        .clipShape(RoundedRectangle(cornerRadius: SSRadius.md, style: .continuous))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: SSRadius.md, style: .continuous)
-                                .strokeBorder(Color.ssTextTertiary.opacity(0.25))
-                        )
-                        .foregroundStyle(Color.ssTextPrimary)
+                    secondaryLabel("detail.action.share", systemImage: "square.and.arrow.up")
+                }
+            }
+        }
+    }
+
+    /// Shown when Open Food Facts (and the Firestore fallback) have nothing for
+    /// this barcode: offer a way forward instead of a dead end.
+    private var notFoundSection: some View {
+        VStack(spacing: SSSpacing.md) {
+            SSEmptyState(
+                icon: "questionmark.circle",
+                title: "result.product.notFound.title",
+                message: "result.product.notFound.message"
+            )
+            SSButton(
+                title: "result.product.action.searchByName",
+                icon: "magnifyingglass",
+                style: .primary
+            ) {
+                showSearch = true
+            }
+            if let url = addToOpenFoodFactsURL {
+                Link(destination: url) {
+                    secondaryLabel("result.product.action.addToOFF", systemImage: "plus.circle")
                 }
             }
         }
     }
 
     // MARK: - Helpers
+
+    /// Outlined, full-width label matching `SSButton(style: .secondary)`, for
+    /// system controls (ShareLink, Link) that provide their own tap handling.
+    private func secondaryLabel(_ title: LocalizedStringKey, systemImage: String) -> some View {
+        Label(title, systemImage: systemImage)
+            .font(SSFont.subheadline().weight(.semibold))
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, SSSpacing.md)
+            .background(Color.ssSurface)
+            .clipShape(RoundedRectangle(cornerRadius: SSRadius.md, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: SSRadius.md, style: .continuous)
+                    .strokeBorder(Color.ssTextTertiary.opacity(0.25))
+            )
+            .foregroundStyle(Color.ssTextPrimary)
+    }
 
     private func nutriscoreLabel(_ grade: String?) -> String {
         guard let grade = grade?.uppercased() else { return "—" }
@@ -244,6 +287,15 @@ struct ProductDetailView: View {
         if let salt = entry.saltPer100g { parts.append(String(format: "Salt: %.2f g/100g", salt)) }
         if let g = entry.nutriscoreGrade?.uppercased() { parts.append("Nutriscore: \(g)") }
         return parts.joined(separator: " — ")
+    }
+
+    private func maybeRequestReview() {
+#if DEBUG
+        if ScreenshotMode.isActive { return }
+#endif
+        guard ReviewGate.shouldAsk else { return }
+        ReviewGate.markAsked()
+        requestReview()
     }
 }
 
@@ -354,6 +406,7 @@ struct AddToJournalSheet: View {
                     line.intake = bucket
                     do {
                         try context.save()
+                        ReviewGate.recordJournalAdd()
                     } catch {
                         assertionFailure("Failed to save intake: \(error)")
                     }
