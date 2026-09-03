@@ -16,7 +16,7 @@ Native iOS app (SwiftUI) that scans food product barcodes and surfaces salt & nu
 - **Scan history & favorites** — SwiftData-backed, searchable, swipe actions.
 - **Product search by name** (Home toolbar, scanner, not-found screen) and **side-by-side comparison** (History › Compare, 2 to 4 products).
 - **App Store rating prompt** after the third successful scan or first journal entry, once per version (`ReviewGate`).
-- **Ad consent** through Google UMP before AdMob starts (`AdsConsentManager`); a privacy-options entry appears in Settings where required.
+- **No ads, no analytics.** The only third-party traffic is Open Food Facts and the Firestore product fallback.
 - **Share** product summaries.
 - **i18n** — English, French, Arabic (full RTL).
 - **Light / Dark / System** appearance + iOS 18 tinted app icon.
@@ -26,7 +26,7 @@ Native iOS app (SwiftUI) that scans food product barcodes and surfaces salt & nu
 - SwiftUI + Swift Concurrency, MVVM
 - SwiftData (iOS 18+) for persistence
 - AVFoundation for barcode capture
-- Firebase (Firestore fallback) + Google Mobile Ads
+- Firebase Firestore (product lookup fallback only; no Analytics, no ads)
 - iOS 18.0 minimum deployment target
 
 ## Build & run

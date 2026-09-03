@@ -40,14 +40,11 @@ en-GB / en-CA / en-AU localizations.
 3. Screenshots: upload `marketing/screenshots/<locale>/6.9/slide_1..6.png` to the
    iPhone 6.9" set and `.../6.5/` to the 6.5" set. en-CA uses en-US, en-AU uses
    en-GB, fr-CA uses fr-FR. Refresh the iPad set too (still the 0.1 captures).
-4. App Privacy: the current label says "Data Not Collected", but the app links
-   Google Mobile Ads and Firebase Analytics. Declare at least: Identifiers (Device
-   ID), Usage Data (Product Interaction, Advertising Data, Other Usage Data),
-   Diagnostics (Crash Data, Performance Data), Location (Coarse Location, from
-   AdMob). Check Google's current disclosure lists for both SDKs when filling it in.
-5. AdMob console › Privacy & messaging: create the GDPR message (and the IDFA
-   message if you later add App Tracking Transparency). Without it, the consent
-   form the app now requests is skipped and ads load as before.
+4. App Privacy: AdMob and Firebase Analytics are gone in 0.4.0. The only remaining
+   third parties are Open Food Facts (product lookups) and the Firestore fallback,
+   neither of which collects user data for the developer, so "Data Not Collected"
+   is accurate. Re-check the label if an SDK is ever added back.
+5. Nothing to configure in any ad console anymore.
 6. After release: watch App Store Connect › Analytics (impressions, product page
    views, conversion rate) per territory and per source, against the pre-release
    baseline.

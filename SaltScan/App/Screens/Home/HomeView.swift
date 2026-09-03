@@ -43,8 +43,6 @@ struct HomeView: View {
                 dailyRingCard
                 latestScansSection
                 articlesSection
-                BannerContentView()
-                    .frame(maxWidth: .infinity)
                 Spacer(minLength: SSSpacing.xl)
             }
             .padding(SSSpacing.md)

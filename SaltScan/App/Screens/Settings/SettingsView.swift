@@ -10,7 +10,6 @@ struct SettingsView: View {
     private let appearances = [Appearance.system, Appearance.dark, Appearance.light]
     @AppStorage("isDarkMode") private var selectedAppearance: Appearance = .system
     @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
-    @ObservedObject private var adsConsent = AdsConsentManager.shared
 
     private static let appStoreID = "6740041173"
     private let reviewURL = URL(string: "https://apps.apple.com/app/id\(SettingsView.appStoreID)?action=write-review")!
@@ -72,14 +71,6 @@ struct SettingsView: View {
 
                 NavigationLink("settings.section.termsAndPolicy.title") {
                     TermsAndPrivacyView()
-                }
-
-                if adsConsent.isPrivacyOptionsRequired {
-                    Button {
-                        adsConsent.presentPrivacyOptions()
-                    } label: {
-                        Label("settings.section.privacyOptions.title", systemImage: "hand.raised.fill")
-                    }
                 }
             } header: {
                 Text("settings.section.information.title")

@@ -3789,30 +3789,6 @@
         }
       }
     },
-    "settings.section.privacyOptions.title": {
-      "comment": "",
-      "extractionState": "manual",
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "خيارات خصوصية الإعلانات"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ad privacy choices"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choix de confidentialité (publicité)"
-          }
-        }
-      }
-    },
     "settings.section.rate.title": {
       "comment": "",
       "extractionState": "manual",

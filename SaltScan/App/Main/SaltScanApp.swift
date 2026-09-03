@@ -27,25 +27,15 @@ struct SaltScanApp: App {
         WindowGroup {
             MainView()
                 .preferredColorScheme(appearance.value)
-                .onAppear(perform: startAds)
         }
         .modelContainer(SaltScanModelContainer.shared)
-    }
-
-    // MARK: - Private
-
-    /// Ads start only after the consent flow has run (no-op outside GDPR
-    /// regions). Skipped entirely while capturing marketing screenshots.
-    private func startAds() {
-#if DEBUG
-        if ScreenshotMode.isActive { return }
-#endif
-        AdsConsentManager.shared.gatherConsentIfNeeded()
     }
 }
 
 import FirebaseCore
 
+/// Firebase is configured only for the Firestore product fallback used by
+/// `FirebaseService`. No Analytics, ads or performance monitoring is linked.
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,

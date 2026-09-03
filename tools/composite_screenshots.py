@@ -136,9 +136,9 @@ SLIDES = [
         "raw": None,
         "bg": (SS_PRIMARY, (12, 86, 102)),
         "title": {
-            "en-US": "Free. No account.",
-            "fr-FR": "Gratuit. Sans compte.",
-            "ar-SA": "مجاني. بدون حساب.",
+            "en-US": "Free. No ads. No account.",
+            "fr-FR": "Gratuit. Sans pub. Sans compte.",
+            "ar-SA": "مجاني. بدون إعلانات. بدون حساب.",
         },
         "subtitle": {
             "en-US": "Your data stays on your phone.",
@@ -147,21 +147,21 @@ SLIDES = [
         },
         "bullets": {
             "en-US": [
+                "No ads, no tracking",
                 "No account, no sign-up",
                 "Scans and journal stay on your device",
-                "Free to use",
                 "Product data from Open Food Facts",
             ],
             "fr-FR": [
+                "Aucune publicité, aucun traçage",
                 "Aucun compte, aucune inscription",
                 "Scans et journal restent sur l'appareil",
-                "Gratuit",
                 "Données produits : Open Food Facts",
             ],
             "ar-SA": [
+                "بدون إعلانات أو تتبع",
                 "بدون حساب أو تسجيل",
                 "المسح والسجل يبقيان على جهازك",
-                "مجاني",
                 "بيانات المنتجات من Open Food Facts",
             ],
         },
