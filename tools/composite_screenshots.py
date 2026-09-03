@@ -44,12 +44,14 @@ FONT_ARABIC = "/System/Library/Fonts/SFArabicRounded.ttf"
 SS_PRIMARY = (47, 184, 133)
 SS_ACCENT = (23, 112, 130)
 
-# Store locale -> (raw capture language, text language, fallback locale for copy)
+# Store locale -> (raw capture folder, text language, fallback locale for copy).
+# Captures are per store locale because the region changes the units on screen
+# (milligrams of sodium for en-US, grams of salt for en-GB).
 LOCALES = {
-    "en-US": ("en", "en", None),
-    "en-GB": ("en", "en", "en-US"),
-    "fr-FR": ("fr", "fr", None),
-    "ar-SA": ("ar", "ar", None),
+    "en-US": ("en-US", "en", None),
+    "en-GB": ("en-GB", "en", "en-US"),
+    "fr-FR": ("fr-FR", "fr", None),
+    "ar-SA": ("ar-SA", "ar", None),
 }
 
 
@@ -66,7 +68,7 @@ SLIDES = [
             "ar-SA": "ملحك اليومي بنظرة واحدة",
         },
         "subtitle": {
-            "en-US": "Track today's intake against your own goal.",
+            "en-US": "Milligrams of sodium, per serving, against your daily goal.",
             "en-GB": "Stay under your daily salt limit.",
             "fr-FR": "Suivez votre consommation face à votre objectif.",
             "ar-SA": "تابع استهلاكك اليومي مقابل هدفك.",

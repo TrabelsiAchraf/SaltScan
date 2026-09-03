@@ -1,6 +1,10 @@
 Search any product by name and compare products side by side are now one tap away, from Home, the scanner and History.
 
 Also in this update:
+• Sodium in milligrams and per serving, with the share of the 2,300 mg daily value, for the US and Canada (or by choice in Settings)
+• The journal portion starts from the manufacturer's serving
+• Doubtful database values are flagged instead of shown as fact
+• Faster lookups: only the fields the app needs are downloaded
 • Salt rating aligned with the UK traffic-light thresholds (low is up to 0.3 g per 100 g)
 • A way forward when a product isn't found: search by name or add it to Open Food Facts
 • Correct version number in Settings and an up-to-date FAQ
