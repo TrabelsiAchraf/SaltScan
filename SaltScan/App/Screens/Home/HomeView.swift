@@ -5,6 +5,7 @@
 
 import SwiftUI
 import SwiftData
+import SaltScanCore
 
 struct HomeView: View {
     var onScanTapped: () -> Void = {}
@@ -12,6 +13,7 @@ struct HomeView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
     @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
     @Environment(\.modelContext) private var context
+    @Environment(\.saltFormatter) private var formatter
     @State private var showOnboarding = false
     @State private var showSearch = false
     @State private var currentIndex = 0
@@ -27,11 +29,18 @@ struct HomeView: View {
 
     private let timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
 
-    private var todaySalt: Double {
+    /// Today's sodium in grams; salt is derived from it for the goal ring.
+    private var todaySodium: Double {
         let cal = Calendar.current
         return allLines
             .filter { cal.isDateInToday($0.addedAt) }
-            .reduce(0) { $0 + $1.saltGrams }
+            .reduce(0) { $0 + $1.sodiumGrams }
+    }
+
+    private var todaySalt: Double { SaltMath.salt(fromSodiumGrams: todaySodium) }
+
+    private var intakeTitleKey: LocalizedStringKey {
+        formatter.unit == .sodiumMilligrams ? "home.dailyIntake.title.sodium" : "home.dailyIntake.title"
     }
 
     private var latestScans: [ScanEntry] { Array(allScans.prefix(3)) }
@@ -86,15 +95,15 @@ struct HomeView: View {
             HStack(spacing: SSSpacing.lg) {
                 SSScoreRing(
                     progress: goalGrams > 0 ? todaySalt / goalGrams : 0,
-                    value: String(format: "%.1fg", todaySalt),
+                    value: formatter.amount(sodiumGrams: todaySodium, precision: .total),
                     caption: "home.dailyIntake.caption",
                     color: todaySalt > goalGrams ? .ssSeverityHigh : .ssPrimary,
                     size: 130
                 )
                 VStack(alignment: .leading, spacing: SSSpacing.xs) {
-                    Text("home.dailyIntake.title")
+                    Text(intakeTitleKey)
                         .font(SSFont.headline())
-                    Text(String(format: "home.dailyIntake.goal".localize, goalGrams))
+                    Text(String(format: "home.dailyIntake.goal".localize, formatter.goal(saltGrams: goalGrams)))
                         .font(SSFont.subheadline())
                         .foregroundStyle(Color.ssTextSecondary)
                     SSButton(
@@ -132,8 +141,8 @@ struct HomeView: View {
                                             .font(SSFont.subheadline().weight(.semibold))
                                             .foregroundStyle(Color.ssTextPrimary)
                                             .lineLimit(1)
-                                        if let salt = entry.saltPer100g {
-                                            Text(String(format: "%.2f g / 100g", salt))
+                                        if let sodium = entry.sodium100g {
+                                            Text(formatter.amount(sodiumGrams: sodium) + " / 100g")
                                                 .font(SSFont.caption())
                                                 .foregroundStyle(Color.ssTextSecondary)
                                         }

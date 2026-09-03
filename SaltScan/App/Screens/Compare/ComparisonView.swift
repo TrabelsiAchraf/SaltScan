@@ -7,17 +7,22 @@
 
 import SwiftUI
 import SwiftData
+import SaltScanCore
 
 struct ComparisonView: View {
     let entries: [ScanEntry]
+    @Environment(\.saltFormatter) private var formatter
 
     var body: some View {
         ScrollView {
             VStack(spacing: SSSpacing.md) {
                 headerRow
-                row(label: "compare.salt", values: entries.map { entry in
-                    entry.saltPer100g.map { String(format: "%.2f g", $0) } ?? "—"
-                })
+                row(
+                    label: formatter.unit == .sodiumMilligrams ? "compare.sodium" : "compare.salt",
+                    values: entries.map { entry in
+                        entry.sodium100g.map { formatter.amount(sodiumGrams: $0) } ?? "—"
+                    }
+                )
                 row(label: "compare.nutriscore", values: entries.map { $0.nutriscoreGrade?.uppercased() ?? "—" })
                 row(label: "compare.sugars", values: entries.map { entry in
                     entry.sugars100g.map { String(format: "%.1f g", $0) } ?? "—"

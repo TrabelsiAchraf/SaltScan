@@ -10,9 +10,11 @@ Native iOS app (SwiftUI) that scans food product barcodes and surfaces salt & nu
 
 ## Features
 
-- **Barcode scanner** — instant lookup via OpenFoodFacts, with Firebase Firestore fallback. Salt rating follows the UK traffic-light thresholds (≤ 0.3 g low, ≤ 1.5 g medium, above high, per 100 g).
+- **Barcode scanner** — instant lookup via the Open Food Facts v2 API (only the fields the app renders), with Firebase Firestore fallback. Salt rating follows the UK traffic-light thresholds (≤ 0.3 g low, ≤ 1.5 g medium, above high, per 100 g).
 - **Rich product detail** — Nutriscore, energy, sugars, saturated fat, salt, proteins, allergens, additives, ingredients, product image. When a barcode is unknown, the app offers search by name or adding the product to Open Food Facts.
-- **Daily salt journal** — log servings, track today's intake against a configurable goal (default 5 g, WHO).
+- **Daily salt journal** — log servings, track today's intake against a configurable goal (default 5 g, WHO), with WHO / UK / FDA / AHA presets.
+- **Units by region** — grams of salt by default; milligrams of sodium, per serving and as % of the 2,300 mg daily value for US and Canadian devices (override in Settings). Storage is always sodium per 100 g.
+- **Data sanity** — impossible Open Food Facts values are dropped and doubtful ones (milligrams typed as grams) are flagged with a link to fix them (`NutrientSanity`).
 - **Scan history & favorites** — SwiftData-backed, searchable, swipe actions.
 - **Product search by name** (Home toolbar, scanner, not-found screen) and **side-by-side comparison** (History › Compare, 2 to 4 products).
 - **App Store rating prompt** after the third successful scan or first journal entry, once per version (`ReviewGate`).
@@ -24,6 +26,7 @@ Native iOS app (SwiftUI) that scans food product barcodes and surfaces salt & nu
 ## Tech stack
 
 - SwiftUI + Swift Concurrency, MVVM
+- `Packages/SaltScanCore` — local Swift package with the UI-free logic (units, formatting, presets, plausibility checks, servings) and its Swift Testing suite: `cd Packages/SaltScanCore && swift test`
 - SwiftData (iOS 18+) for persistence
 - AVFoundation for barcode capture
 - Firebase Firestore (product lookup fallback only; no Analytics, no ads)

@@ -9,6 +9,7 @@
 
 import Foundation
 import SwiftData
+import SaltScanCore
 
 @Model
 final class DailyIntake {
@@ -22,9 +23,14 @@ final class DailyIntake {
         self.day = Calendar.current.startOfDay(for: day)
     }
 
+    /// Total sodium consumed across all lines, in grams.
+    var totalSodiumGrams: Double {
+        lines.reduce(0) { $0 + $1.sodiumGrams }
+    }
+
     /// Total salt consumed across all lines, in grams.
     var totalSaltGrams: Double {
-        lines.reduce(0) { $0 + $1.saltGrams }
+        SaltMath.salt(fromSodiumGrams: totalSodiumGrams)
     }
 }
 
@@ -42,9 +48,14 @@ final class IntakeLine {
         self.addedAt = addedAt
     }
 
-    /// Salt in grams for this portion: (sodium per 100g × 2.5) × (grams / 100).
-    var saltGrams: Double {
+    /// Sodium in grams for this portion: sodium per 100g × (grams / 100).
+    var sodiumGrams: Double {
         guard let sodium100g = scan?.sodium100g else { return 0 }
-        return sodium100g * 2.5 * grams / 100
+        return sodium100g * grams / 100
+    }
+
+    /// Salt in grams for this portion.
+    var saltGrams: Double {
+        SaltMath.salt(fromSodiumGrams: sodiumGrams)
     }
 }

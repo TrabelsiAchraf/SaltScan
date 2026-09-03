@@ -7,8 +7,10 @@
 
 import SwiftUI
 import SwiftData
+import SaltScanCore
 
 struct MainView: View {
+    @AppStorage(SaltUnitPreference.storageKey) private var unitPreference: SaltUnitPreference = .automatic
     @State private var showScanner: Bool = false
     @State private var selectedTab: Tab = .home
     @State private var screenshotDetailEntry: ScanEntry?
@@ -55,6 +57,7 @@ struct MainView: View {
                 .tag(Tab.settings)
         }
         .tint(Color.ssPrimary)
+        .environment(\.saltFormatter, unitPreference.formatter)
         .fullScreenCover(isPresented: $showScanner) {
             ProductScannerView()
         }

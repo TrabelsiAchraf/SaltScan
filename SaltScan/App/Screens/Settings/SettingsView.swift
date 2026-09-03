@@ -5,11 +5,14 @@
 //  Created by Achraf Trabelsi on 30/12/2024.
 //
 import SwiftUI
+import SaltScanCore
 
 struct SettingsView: View {
     private let appearances = [Appearance.system, Appearance.dark, Appearance.light]
     @AppStorage("isDarkMode") private var selectedAppearance: Appearance = .system
     @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
+    @AppStorage(SaltUnitPreference.storageKey) private var unitPreference: SaltUnitPreference = .automatic
+    @Environment(\.saltFormatter) private var formatter
 
     private static let appStoreID = "6740041173"
     private let reviewURL = URL(string: "https://apps.apple.com/app/id\(SettingsView.appStoreID)?action=write-review")!
@@ -30,21 +33,16 @@ struct SettingsView: View {
                         Text($0.text)
                     }
                 }
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("settings.goal.title")
-                        Spacer()
-                        Text(String(format: "%.1f g", goalGrams))
-                            .foregroundStyle(Color.ssPrimary)
-                            .monospacedDigit()
-                    }
-                    Slider(value: $goalGrams, in: 2...10, step: 0.5)
-                        .tint(Color.ssPrimary)
+                Picker("settings.unit.title", selection: $unitPreference) {
+                    Text("settings.unit.automatic").tag(SaltUnitPreference.automatic)
+                    Text("settings.unit.salt").tag(SaltUnitPreference.saltGrams)
+                    Text("settings.unit.sodium").tag(SaltUnitPreference.sodiumMilligrams)
                 }
+                goalRow
             } header: {
                 Text("settings.section.general.title")
             } footer: {
-                Text("settings.goal.footer")
+                Text(formatter.unit == .sodiumMilligrams ? LocalizedStringKey("settings.goal.footer.sodium") : LocalizedStringKey("settings.goal.footer"))
             }
 
             Section {
@@ -103,6 +101,52 @@ struct SettingsView: View {
             } header: {
                 Text("settings.section.help.title")
             }
+        }
+    }
+
+    // MARK: - Goal
+
+    /// Slider in the user's unit (grams of salt or milligrams of sodium) with
+    /// the usual reference values one tap away. Storage stays in grams of salt.
+    private var goalRow: some View {
+        let bounds = GoalPresets.sliderRange(for: formatter.unit)
+        return VStack(alignment: .leading, spacing: SSSpacing.xs) {
+            HStack {
+                Text(formatter.unit == .sodiumMilligrams ? LocalizedStringKey("settings.goal.title.sodium") : LocalizedStringKey("settings.goal.title"))
+                Spacer()
+                Text(formatter.goal(saltGrams: goalGrams))
+                    .foregroundStyle(Color.ssPrimary)
+                    .monospacedDigit()
+            }
+            Slider(value: $goalGrams, in: bounds.range, step: bounds.step)
+                .tint(Color.ssPrimary)
+            HStack(spacing: SSSpacing.xs) {
+                ForEach(GoalPresets.presets(for: formatter.unit)) { preset in
+                    let selected = abs(goalGrams - preset.saltGrams) < 0.01
+                    Button {
+                        goalGrams = preset.saltGrams
+                    } label: {
+                        Text(presetKey(preset.kind))
+                            .font(SSFont.caption().weight(.semibold))
+                            .padding(.vertical, SSSpacing.xxs)
+                            .padding(.horizontal, SSSpacing.xs)
+                            .background(selected ? Color.ssPrimary : Color.ssPrimary.opacity(0.12))
+                            .foregroundStyle(selected ? Color.white : Color.ssPrimary)
+                            .clipShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+    }
+
+    private func presetKey(_ kind: GoalPreset.Kind) -> LocalizedStringKey {
+        switch kind {
+        case .who: "settings.goal.preset.who"
+        case .uk: "settings.goal.preset.uk"
+        case .aha: "settings.goal.preset.aha"
+        case .whoSodium: "settings.goal.preset.whoSodium"
+        case .fda: "settings.goal.preset.fda"
         }
     }
 }

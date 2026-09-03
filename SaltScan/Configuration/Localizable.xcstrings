@@ -1198,6 +1198,30 @@
         }
       }
     },
+    "compare.sodium": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصوديوم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium"
+          }
+        }
+      }
+    },
     "compare.sugars": {
       "extractionState": "manual",
       "localizations": {
@@ -1790,6 +1814,126 @@
         }
       }
     },
+    "detail.data.impossible": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قيمة الصوديوم على Open Food Facts تتجاوز ما يحتويه الملح الخالص، لذا تم إخفاؤها. تحقق من الملصق."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sodium value on Open Food Facts is above what pure salt contains, so it is hidden. Check the label."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La valeur de sodium sur Open Food Facts dépasse celle du sel pur, elle est donc masquée. Vérifiez l'étiquette."
+          }
+        }
+      }
+    },
+    "detail.data.report": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تصحيحه على Open Food Facts"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fix it on Open Food Facts"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Corriger sur Open Food Facts"
+          }
+        }
+      }
+    },
+    "detail.data.suspicious.high": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوديوم أعلى بكثير من المعتاد لهذا النوع من المنتجات. أحيانًا يُدخل المساهمون الملليغرامات كغرامات. تحقق من الملصق."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Far too much sodium for this kind of product. Contributors sometimes type milligrams as grams. Check the label before trusting it."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beaucoup trop de sodium pour ce type de produit. Des contributeurs saisissent parfois des milligrammes en grammes. Vérifiez l'étiquette."
+          }
+        }
+      }
+    },
+    "detail.data.suspicious.low": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد صوديوم تقريبًا لطعام معالج. قد تكون القيمة أقل بألف مرة. تحقق من الملصق."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Almost no sodium for a processed food. The value may be 1,000 times too small. Check the label."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Presque pas de sodium pour un aliment transformé. La valeur est peut-être 1 000 fois trop petite. Vérifiez l'étiquette."
+          }
+        }
+      }
+    },
+    "detail.data.suspicious.title": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذه القيمة تبدو خاطئة"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This value looks wrong"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cette valeur semble fausse"
+          }
+        }
+      }
+    },
     "detail.nutrient.energy": {
       "extractionState": "manual",
       "localizations": {
@@ -1970,6 +2114,102 @@
           "stringUnit": {
             "state": "translated",
             "value": "ملح / 100غ"
+          }
+        }
+      }
+    },
+    "detail.serving.dv": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% من القيمة اليومية (2300 ملغ)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% of the 2,300 mg daily value"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d %% de la valeur quotidienne (2 300 mg)"
+          }
+        }
+      }
+    },
+    "detail.serving.size": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الحصة: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serving: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Portion : %@"
+          }
+        }
+      }
+    },
+    "detail.serving.title": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لكل حصة"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per serving"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Par portion"
+          }
+        }
+      }
+    },
+    "detail.sodium.per100g": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوديوم / 100غ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium / 100g"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium / 100g"
           }
         }
       }
@@ -2399,19 +2639,19 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الهدف اليومي: %.1f غ"
+            "value": "الهدف اليومي: %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Daily goal: %.1f g"
+            "value": "Daily goal: %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Objectif quotidien : %.1f g"
+            "value": "Objectif quotidien : %@"
           }
         }
       }
@@ -2435,6 +2675,30 @@
           "stringUnit": {
             "state": "translated",
             "value": "ملح اليوم"
+          }
+        }
+      }
+    },
+    "home.dailyIntake.title.sodium": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوديوم اليوم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's sodium"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium du jour"
           }
         }
       }
@@ -2656,19 +2920,43 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الملح التقديري: %.2f غ"
+            "value": "الملح المقدر: %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estimated salt: %.2f g"
+            "value": "Estimated salt: %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sel estimé : %.2f g"
+            "value": "Sel estimé : %@"
+          }
+        }
+      }
+    },
+    "journal.portion.sodiumEstimate": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصوديوم المقدر: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated sodium: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium estimé : %@"
           }
         }
       }
@@ -3550,6 +3838,150 @@
         }
       }
     },
+    "settings.goal.footer.sodium": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القيمة اليومية حسب FDA هي 2300 ملغ من الصوديوم. توصي منظمة الصحة العالمية بالبقاء تحت 2000 ملغ، أي 5 غ من الملح."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The FDA daily value is 2,300 mg of sodium. The WHO recommends staying under 2,000 mg, which is 5 g of salt."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La valeur quotidienne FDA est de 2 300 mg de sodium. L'OMS recommande de rester sous 2 000 mg, soit 5 g de sel."
+          }
+        }
+      }
+    },
+    "settings.goal.preset.aha": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AHA 1500 ملغ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AHA 1,500 mg"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AHA 1 500 mg"
+          }
+        }
+      }
+    },
+    "settings.goal.preset.fda": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FDA 2300 ملغ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FDA 2,300 mg"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FDA 2 300 mg"
+          }
+        }
+      }
+    },
+    "settings.goal.preset.uk": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UK 6 غ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UK 6 g"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "R.-U. 6 g"
+          }
+        }
+      }
+    },
+    "settings.goal.preset.who": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WHO 5 غ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WHO 5 g"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OMS 5 g"
+          }
+        }
+      }
+    },
+    "settings.goal.preset.whoSodium": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WHO 2000 ملغ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "WHO 2,000 mg"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OMS 2 000 mg"
+          }
+        }
+      }
+    },
     "settings.goal.title": {
       "extractionState": "manual",
       "localizations": {
@@ -3569,6 +4001,30 @@
           "stringUnit": {
             "state": "translated",
             "value": "الهدف اليومي للملح"
+          }
+        }
+      }
+    },
+    "settings.goal.title.sodium": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الهدف اليومي للصوديوم"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily sodium goal"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Objectif quotidien de sodium"
           }
         }
       }
@@ -3885,6 +4341,102 @@
         }
       }
     },
+    "settings.unit.automatic": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تلقائي"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatique"
+          }
+        }
+      }
+    },
+    "settings.unit.salt": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ملح، غرام"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salt, grams"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sel, grammes"
+          }
+        }
+      }
+    },
+    "settings.unit.sodium": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوديوم، ملليغرام"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium, milligrams"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sodium, milligrammes"
+          }
+        }
+      }
+    },
+    "settings.unit.title": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض الكميات بـ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show amounts as"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher les quantités en"
+          }
+        }
+      }
+    },
     "termsAndPrivacy.privacy.description": {
       "comment": "",
       "extractionState": "manual",
@@ -4001,6 +4553,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Conditions d’utilisation et Politique de confidentialité"
+          }
+        }
+      }
+    },
+    "unit.gram": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "g"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "g"
+          }
+        }
+      }
+    },
+    "unit.milligram": {
+      "comment": "",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ملغ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mg"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mg"
           }
         }
       }

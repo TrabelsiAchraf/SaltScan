@@ -69,10 +69,10 @@ final class ProductSearchViewModel: ObservableObject {
         isLoading = true
         defer { isLoading = false }
 
-        let urlString = "https://world.openfoodfacts.org/cgi/search.pl?search_terms=\(encoded)&search_simple=1&json=1&page_size=25"
+        let urlString = "https://world.openfoodfacts.org/cgi/search.pl?search_terms=\(encoded)&search_simple=1&json=1&page_size=25&fields=code,product_name,brands"
         guard let url = URL(string: urlString) else { return }
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await APIService.shared.session.data(from: url)
             let decoded = try JSONDecoder().decode(ProductSearchResponse.self, from: data)
             results = decoded.products.filter { !$0.code.isEmpty }
         } catch {

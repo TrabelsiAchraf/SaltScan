@@ -21,11 +21,13 @@ MVVM with SwiftUI. Source lives under `SaltScan/App/`:
 
 - `Main/` — `SaltScanApp` (entry point, configures Firebase via `AppDelegate`) and `MainView` (root tab container).
 - `Screens/` — feature folders, each containing a `View` + `ViewModel` (+ model types). Features: `Onboarding`, `Home` (with `Articles`), `Scanner` (barcode capture), `Result` (product details), `Settings`.
-- `Services/APIService.swift` — singleton `APIService` fetches products from OpenFoodFacts (`world.openfoodfacts.org/api/v0/product/{barcode}.json`). On network/decoding failure it falls back to `FirebaseService`, which reads from the Firestore `products` collection and maps `FirebaseProductResponse` → `ProductResponse` via `mapToProductResponse()`.
+- `Services/APIService.swift` — singleton `APIService` fetches products from OpenFoodFacts (`world.openfoodfacts.org/api/v2/product/{barcode}.json?fields=…`, identifying User-Agent). On network/decoding failure it falls back to `FirebaseService`, which reads from the Firestore `products` collection and maps `FirebaseProductResponse` → `ProductResponse` via `mapToProductResponse()`.
 - `Components/` — reusable SwiftUI views (e.g. `PrimaryButton`).
 - `Utils/` — `Constants`, `Appearance` (light/dark/system via `@AppStorage("isDarkMode")`), `ColorsManager`, `ReviewGate` (rating prompt gating), misc helpers.
 
 `Configuration/` holds `Info.plist`, `GoogleService-Info.plist`, `Assets.xcassets`, and `Localizable.xcstrings` (multi-language including Arabic — RTL support matters when touching layout).
+
+`Packages/SaltScanCore/` is a local Swift package holding UI-free logic (units and formatting, goal presets, `NutrientSanity` plausibility checks, `ServingInfo`); run its tests with `cd Packages/SaltScanCore && swift test`.
 
 ## Conventions
 

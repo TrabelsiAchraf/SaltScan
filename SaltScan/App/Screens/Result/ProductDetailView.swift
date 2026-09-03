@@ -12,6 +12,7 @@
 import SwiftUI
 import SwiftData
 import StoreKit
+import SaltScanCore
 
 struct ProductDetailView: View {
     let barcode: String
@@ -21,6 +22,7 @@ struct ProductDetailView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @Environment(\.requestReview) private var requestReview
+    @Environment(\.saltFormatter) private var formatter
     @StateObject private var viewModel = ResultViewModel()
     @State private var showJournalSheet = false
     @State private var showSearch = false
@@ -36,7 +38,9 @@ struct ProductDetailView: View {
             VStack(spacing: SSSpacing.lg) {
                 if let entry {
                     heroSection(entry)
+                    dataWarningSection(entry)
                     scoreSection(entry)
+                    servingSection(entry)
                     nutrientsSection(entry)
                     tagsSection(entry)
                     actionsSection(entry)
@@ -141,12 +145,12 @@ struct ProductDetailView: View {
                         .font(SSFont.headline())
                 }
                 Spacer()
-                if let salt = entry.saltPer100g {
+                if let sodium = entry.sodium100g {
                     VStack(alignment: .trailing, spacing: 2) {
-                        Text("detail.salt.per100g")
+                        Text(per100gLabelKey)
                             .font(SSFont.caption())
                             .foregroundStyle(Color.ssTextSecondary)
-                        Text(String(format: "%.2f g", salt))
+                        Text(formatter.amount(sodiumGrams: sodium))
                             .font(SSFont.title3())
                             .foregroundStyle(entry.severity?.color ?? Color.ssTextPrimary)
                     }
@@ -177,7 +181,7 @@ struct ProductDetailView: View {
                     SSNutrientRow(
                         icon: "cross.vial.fill",
                         label: "detail.nutrient.sodium",
-                        value: String(format: "%.3f g", v),
+                        value: formatter.sodiumOnly(sodiumGrams: v),
                         severity: entry.severity
                     )
                 }
@@ -259,6 +263,75 @@ struct ProductDetailView: View {
         }
     }
 
+    /// Manufacturer serving with its sodium, and the share of the FDA daily
+    /// value when the user reads sodium in milligrams.
+    @ViewBuilder
+    private func servingSection(_ entry: ScanEntry) -> some View {
+        if entry.serving.hasServing,
+           let perServing = entry.serving.sodiumPerServing(sodium100g: entry.sodium100g) {
+            SSCard {
+                HStack(spacing: SSSpacing.lg) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("detail.serving.title")
+                            .font(SSFont.caption())
+                            .foregroundStyle(Color.ssTextSecondary)
+                        if let label = entry.serving.label, !label.isEmpty {
+                            Text(String(format: "detail.serving.size".localize, label))
+                                .font(SSFont.subheadline())
+                        } else if let quantity = entry.serving.quantityGrams {
+                            Text(String(format: "detail.serving.size".localize, String(format: "%.0f g", quantity)))
+                                .font(SSFont.subheadline())
+                        }
+                    }
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 2) {
+                        Text(formatter.amount(sodiumGrams: perServing))
+                            .font(SSFont.title3())
+                            .foregroundStyle(entry.severity?.color ?? Color.ssTextPrimary)
+                        if formatter.unit == .sodiumMilligrams {
+                            Text(String(format: "detail.serving.dv".localize, formatter.percentOfDailyValue(sodiumGrams: perServing)))
+                                .font(SSFont.caption())
+                                .foregroundStyle(Color.ssTextSecondary)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /// Crowd-sourced data sometimes has milligrams typed as grams. Say so
+    /// instead of rating a cola "high", and point to where it can be fixed.
+    @ViewBuilder
+    private func dataWarningSection(_ entry: ScanEntry) -> some View {
+        if entry.dataVerdict != .ok {
+            SSCard {
+                VStack(alignment: .leading, spacing: SSSpacing.xs) {
+                    Label("detail.data.suspicious.title", systemImage: "exclamationmark.triangle.fill")
+                        .font(SSFont.headline())
+                        .foregroundStyle(Color.ssSeverityMedium)
+                    Text(warningMessageKey(entry.dataVerdict))
+                        .font(SSFont.subheadline())
+                        .foregroundStyle(Color.ssTextSecondary)
+                    if let url = URL(string: "https://world.openfoodfacts.org/product/\(barcode)") {
+                        Link(destination: url) {
+                            Label("detail.data.report", systemImage: "pencil.and.list.clipboard")
+                                .font(SSFont.subheadline().weight(.semibold))
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func warningMessageKey(_ verdict: NutrientSanity.Verdict) -> LocalizedStringKey {
+        switch verdict {
+        case .impossible: "detail.data.impossible"
+        case .suspiciousHigh: "detail.data.suspicious.high"
+        case .suspiciousLow: "detail.data.suspicious.low"
+        case .ok: ""
+        }
+    }
+
     // MARK: - Helpers
 
     /// Outlined, full-width label matching `SSButton(style: .secondary)`, for
@@ -284,9 +357,16 @@ struct ProductDetailView: View {
 
     private func shareText(_ entry: ScanEntry) -> String {
         var parts = [entry.productName]
-        if let salt = entry.saltPer100g { parts.append(String(format: "Salt: %.2f g/100g", salt)) }
+        if let sodium = entry.sodium100g {
+            let word = formatter.unit == .sodiumMilligrams ? "Sodium" : "Salt"
+            parts.append("\(word): \(formatter.amount(sodiumGrams: sodium))/100g")
+        }
         if let g = entry.nutriscoreGrade?.uppercased() { parts.append("Nutriscore: \(g)") }
         return parts.joined(separator: " — ")
+    }
+
+    private var per100gLabelKey: LocalizedStringKey {
+        formatter.unit == .sodiumMilligrams ? "detail.sodium.per100g" : "detail.salt.per100g"
     }
 
     private func maybeRequestReview() {
@@ -371,7 +451,14 @@ struct AddToJournalSheet: View {
 
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
-    @State private var grams: Double = 30
+    @Environment(\.saltFormatter) private var formatter
+    @State private var grams: Double
+
+    /// Starts on the manufacturer's serving when the database has one.
+    init(scan: ScanEntry) {
+        self.scan = scan
+        _grams = State(initialValue: scan.serving.defaultPortionGrams() ?? 30)
+    }
 
     var body: some View {
         NavigationStack {
@@ -390,8 +477,9 @@ struct AddToJournalSheet: View {
                 Slider(value: $grams, in: 5...500, step: 5)
                     .tint(Color.ssPrimary)
 
-                if let salt = scan.saltPer100g {
-                    Text(String(format: "journal.portion.saltEstimate".localize, salt * grams / 100))
+                if let sodium100g = scan.sodium100g {
+                    let key = formatter.unit == .sodiumMilligrams ? "journal.portion.sodiumEstimate" : "journal.portion.saltEstimate"
+                    Text(String(format: key.localize, formatter.amount(sodiumGrams: sodium100g * grams / 100)))
                         .font(SSFont.subheadline())
                         .foregroundStyle(Color.ssTextSecondary)
                 }

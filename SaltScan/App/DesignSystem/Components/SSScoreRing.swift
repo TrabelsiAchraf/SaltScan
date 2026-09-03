@@ -35,6 +35,9 @@ struct SSScoreRing: View {
             VStack(spacing: 2) {
                 Text(value)
                     .font(.system(size: size * 0.28, weight: .bold, design: .rounded))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .frame(maxWidth: size * 0.78)
                     .foregroundStyle(color)
                 if let caption {
                     Text(caption)

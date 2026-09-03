@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftData
+import SaltScanCore
 
 @Model
 final class ScanEntry {
@@ -17,7 +18,8 @@ final class ScanEntry {
     var brand: String?
     var imageURL: String?
 
-    /// Sodium grams per 100g as returned by OFF. Salt ≈ sodium × 2.5.
+    /// Sodium grams per 100g after `NutrientSanity` (nil when the database
+    /// value was impossible). Salt ≈ sodium × 2.5.
     var sodium100g: Double?
     /// Full nutriment snapshot (energy/sugars/sat-fat/proteins per 100g).
     var energyKcal100g: Double?
@@ -30,6 +32,16 @@ final class ScanEntry {
     var ingredientsText: String?
     var allergens: [String]
     var additives: [String]
+
+    /// Manufacturer serving as published on Open Food Facts.
+    var servingSize: String?
+    var servingQuantityGrams: Double?
+    /// Sodium per serving, grams.
+    var sodiumServing: Double?
+    /// Raw OFF category tags ("en:sodas"), used by the plausibility checks.
+    var categories: [String]?
+    /// `NutrientSanity.Verdict` at ingestion time.
+    var dataVerdictRaw: String?
 
     var scannedAt: Date
     var isFavorite: Bool
@@ -52,6 +64,11 @@ final class ScanEntry {
         ingredientsText: String? = nil,
         allergens: [String] = [],
         additives: [String] = [],
+        servingSize: String? = nil,
+        servingQuantityGrams: Double? = nil,
+        sodiumServing: Double? = nil,
+        categories: [String]? = nil,
+        dataVerdictRaw: String? = nil,
         scannedAt: Date = .now,
         isFavorite: Bool = false
     ) {
@@ -68,6 +85,11 @@ final class ScanEntry {
         self.ingredientsText = ingredientsText
         self.allergens = allergens
         self.additives = additives
+        self.servingSize = servingSize
+        self.servingQuantityGrams = servingQuantityGrams
+        self.sodiumServing = sodiumServing
+        self.categories = categories
+        self.dataVerdictRaw = dataVerdictRaw
         self.scannedAt = scannedAt
         self.isFavorite = isFavorite
     }
@@ -80,6 +102,14 @@ final class ScanEntry {
 
     /// Salt per 100g, in grams.
     var saltPer100g: Double? {
-        sodium100g.map { $0 * 2.5 }
+        sodium100g.map(SaltMath.salt(fromSodiumGrams:))
+    }
+
+    var serving: ServingInfo {
+        ServingInfo(label: servingSize, quantityGrams: servingQuantityGrams, sodiumGrams: sodiumServing)
+    }
+
+    var dataVerdict: NutrientSanity.Verdict {
+        dataVerdictRaw.flatMap(NutrientSanity.Verdict.init(rawValue:)) ?? .ok
     }
 }
