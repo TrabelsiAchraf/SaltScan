@@ -1,0 +1,1 @@
+compteur,pression,artérielle,hypertension,rein,coeur,nutrition,étiquette,code,barre,régime,journal

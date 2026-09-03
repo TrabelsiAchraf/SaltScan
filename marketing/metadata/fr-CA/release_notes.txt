@@ -1,0 +1,9 @@
+La recherche par nom et la comparaison de produits côte à côte sont désormais à un geste, depuis l'accueil, le scanner et l'historique.
+
+Aussi dans cette version :
+• Repère de sel aligné sur les seuils des feux tricolores (faible jusqu'à 0,3 g pour 100 g)
+• Une issue quand un produit est introuvable : recherche par nom ou ajout sur Open Food Facts
+• Numéro de version correct dans les Réglages et FAQ à jour
+• Choix de consentement publicitaire pour l'Europe et le Royaume-Uni
+
+Si Salt Scan vous aide à manger moins salé, une note aide d'autres personnes à le trouver.

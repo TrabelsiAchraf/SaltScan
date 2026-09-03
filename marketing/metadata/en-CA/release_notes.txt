@@ -1,0 +1,9 @@
+Search any product by name and compare products side by side are now one tap away, from Home, the scanner and History.
+
+Also in this update:
+• Salt rating aligned with the UK traffic-light thresholds (low is up to 0.3 g per 100 g)
+• A way forward when a product isn't found: search by name or add it to Open Food Facts
+• Correct version number in Settings and an up-to-date FAQ
+• Ad consent choices for users in Europe and the UK
+
+If Salt Scan helps you eat less salt, a rating helps other people find it.

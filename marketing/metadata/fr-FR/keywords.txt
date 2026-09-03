@@ -1,0 +1,1 @@
+produit,code,barre,nutrition,nutriscore,régime,santé,coeur,rein,compteur,journal,hypertension,repas
