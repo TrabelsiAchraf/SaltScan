@@ -44,6 +44,12 @@ extension View {
     func ssShadow(_ shadow: SSShadow = .soft) -> some View {
         self.shadow(color: shadow.color, radius: shadow.radius, x: shadow.x, y: shadow.y)
     }
+
+    /// Keeps scrolling content at a readable width on iPad instead of
+    /// stretching cards across the whole screen.
+    func ssReadableWidth(_ maxWidth: CGFloat = 720) -> some View {
+        self.frame(maxWidth: maxWidth).frame(maxWidth: .infinity)
+    }
 }
 
 // MARK: - Typography

@@ -60,8 +60,8 @@ SaltScan/App/
 ## Tooling
 
 - `tools/generate_app_icon.py` — Pillow script that generates the 3 iOS 18 app icon variants (any / dark / tinted).
-- `tools/take_screenshots.sh` — drives the iPhone 16 Pro Max simulator to capture 5 raw screens in en/fr/ar (routes: home, scanner, detail, compare, history).
-- `tools/composite_screenshots.py` — composites them into 6 App Store slides per store locale (en-US, en-GB, fr-FR, ar-SA) and per display size (6.5" 1284×2778, 6.9" 1320×2868) under `marketing/screenshots/<locale>/<size>/`.
+- `tools/take_screenshots.sh` — drives the iPhone 16 Pro Max simulator (or the iPad Pro 13-inch with `DEVICE=ipad`) to capture 5 raw screens per store locale (routes: home, scanner, detail, compare, history) into `marketing/raw/<device>/<locale>/`.
+- `tools/composite_screenshots.py` — composites them into 6 App Store slides per store locale (en-US, en-GB, fr-FR, ar-SA) and per display size (6.5" 1284×2778, 6.9" 1320×2868, iPad 13" 2064×2752) under `marketing/screenshots/<locale>/<size>/`.
 - `marketing/metadata/<locale>/` — App Store Connect name, subtitle, keywords, promotional text, description and release notes per localization, with the submission checklist in `marketing/metadata/README.md`.
 
 ## License

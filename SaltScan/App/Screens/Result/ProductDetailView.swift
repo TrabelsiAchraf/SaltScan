@@ -56,6 +56,7 @@ struct ProductDetailView: View {
                 }
             }
             .padding(SSSpacing.md)
+            .ssReadableWidth()
         }
         .background(Color.ssGroupedBackground)
         .navigationTitle("result.product.name")

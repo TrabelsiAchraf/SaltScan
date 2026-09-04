@@ -55,6 +55,7 @@ struct HomeView: View {
                 Spacer(minLength: SSSpacing.xl)
             }
             .padding(SSSpacing.md)
+            .ssReadableWidth()
         }
         .background(Color.ssGroupedBackground)
         .navigationTitle("main.title")

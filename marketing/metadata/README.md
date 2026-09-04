@@ -38,8 +38,8 @@ en-GB / en-CA / en-AU localizations.
 2. Version 0.4.0 › each localization: paste `description.txt`, `keywords.txt`,
    `promotional_text.txt`, `release_notes.txt`.
 3. Screenshots: upload `marketing/screenshots/<locale>/6.9/slide_1..6.png` to the
-   iPhone 6.9" set and `.../6.5/` to the 6.5" set. en-CA uses en-US, en-AU uses
-   en-GB, fr-CA uses fr-FR. Refresh the iPad set too (still the 0.1 captures).
+   iPhone 6.9" set, `.../6.5/` to the 6.5" set and `.../ipad-13/` (2064 × 2752) to
+   the iPad 13" set. en-CA uses en-US, en-AU uses en-GB, fr-CA uses fr-FR.
 4. App Privacy: AdMob and Firebase Analytics are gone in 0.4.0. The only remaining
    third parties are Open Food Facts (product lookups) and the Firestore fallback,
    neither of which collects user data for the developer, so "Data Not Collected"

@@ -35,6 +35,7 @@ struct ComparisonView: View {
                 })
             }
             .padding(SSSpacing.md)
+            .ssReadableWidth()
         }
         .background(Color.ssGroupedBackground)
         .navigationTitle("compare.title")

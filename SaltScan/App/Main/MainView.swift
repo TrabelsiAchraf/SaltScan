@@ -14,6 +14,7 @@ struct MainView: View {
     @State private var showScanner: Bool = false
     @State private var selectedTab: Tab = .home
     @State private var screenshotDetailEntry: ScanEntry?
+    @State private var screenshotDetailEntryFullScreen: ScanEntry?
     @State private var screenshotCompareEntries: [ScanEntry] = []
     @State private var showScreenshotCompare = false
 
@@ -67,6 +68,11 @@ struct MainView: View {
                 ProductDetailView(barcode: entry.barcode, preloadedEntry: entry)
             }
         }
+        .fullScreenCover(item: $screenshotDetailEntryFullScreen) { entry in
+            NavigationStack {
+                ProductDetailView(barcode: entry.barcode, preloadedEntry: entry)
+            }
+        }
         .fullScreenCover(isPresented: $showScreenshotCompare) {
             NavigationStack {
                 ComparisonView(entries: screenshotCompareEntries)
@@ -95,7 +101,12 @@ struct MainView: View {
                 predicate: #Predicate { $0.barcode == "0123456000002" }
             )
             if let entry = try? context.fetch(descriptor).first {
-                screenshotDetailEntry = entry
+                // iPad sheets are small centered forms: capture the detail full screen there.
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    screenshotDetailEntryFullScreen = entry
+                } else {
+                    screenshotDetailEntry = entry
+                }
             }
         case "compare":
             // Side-by-side of three seeded products with contrasting salt levels.

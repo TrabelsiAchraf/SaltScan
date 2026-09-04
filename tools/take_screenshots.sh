@@ -2,9 +2,9 @@
 #
 # Capture marketing screenshots of SaltScan from the iOS Simulator.
 #
-# Drives 5 screens × 4 store locales = 20 raw captures on an iPhone 16 Pro Max
-# (6.9", 1320 × 2868), then tools/composite_screenshots.py turns them into the
-# App Store slides for every locale and display size.
+# Drives 5 screens × 4 store locales = 20 raw captures per device (iPhone 16 Pro
+# Max 1320 × 2868, or iPad Pro 13-inch 2064 × 2752 with DEVICE=ipad), then
+# tools/composite_screenshots.py turns them into the App Store slides.
 #
 # Requires: iPhone 16 Pro Max booted, Debug app installed (com.tadev.SaltScan):
 #   xcodebuild -project SaltScan.xcodeproj -scheme SaltScan -configuration Debug \
@@ -13,9 +13,17 @@
 #
 set -euo pipefail
 
-SIM_UUID="${SIM_UUID:-B8161024-9E45-4E9C-A2BE-43A71001BB82}"   # iPhone 16 Pro Max
+# DEVICE=iphone (default) captures on the iPhone 16 Pro Max (6.9"),
+# DEVICE=ipad on the iPad Pro 13-inch (M4). Override SIM_UUID to pick another simulator.
+DEVICE="${DEVICE:-iphone}"
+if [[ "$DEVICE" == "ipad" ]]; then
+  DEFAULT_SIM="8B4F0276-6A5A-4372-B838-8AEE063D22C5"   # iPad Pro 13-inch (M4), iOS 18
+else
+  DEFAULT_SIM="B8161024-9E45-4E9C-A2BE-43A71001BB82"   # iPhone 16 Pro Max, iOS 18
+fi
+SIM_UUID="${SIM_UUID:-$DEFAULT_SIM}"
 BUNDLE_ID="com.tadev.SaltScan"
-RAW_DIR="$PWD/marketing/raw"
+RAW_DIR="$PWD/marketing/raw/$DEVICE"
 mkdir -p "$RAW_DIR"
 
 # (route, slide number) — order matches tools/composite_screenshots.py.
@@ -61,4 +69,4 @@ for locale in "${LOCALES[@]}"; do
   done
 done
 
-echo "All raw captures done. Run: python3 tools/composite_screenshots.py"
+echo "All $DEVICE captures done. Run: python3 tools/composite_screenshots.py"

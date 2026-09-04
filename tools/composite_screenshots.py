@@ -10,9 +10,11 @@ slide (free, no account, data stays on the phone, Open Food Facts).
 
 Every slide is rendered per store locale (the wording differs: "sodium" for
 US/CA, "salt" for GB/AU) and per App Store display size:
-  6.5"  1284 × 2778   (iPhone 14 Plus class)
-  6.9"  1320 × 2868   (iPhone 16 Pro Max class, required set)
+  6.5"      1284 × 2778   (iPhone 14 Plus class)
+  6.9"      1320 × 2868   (iPhone 16 Pro Max class, required set)
+  ipad-13   2064 × 2752   (iPad Pro 13-inch, required when the app runs on iPad)
 
+Raw captures live in marketing/raw/<device>/<locale>/ (device = iphone | ipad).
 Output: marketing/screenshots/<locale>/<size>/slide_{1..6}.png
         en-CA reuses en-US, en-AU reuses en-GB, fr-CA reuses fr-FR.
 """
@@ -31,11 +33,22 @@ from bidi.algorithm import get_display
 
 # ----- Constants ------------------------------------------------------------
 
-BASE_W, BASE_H = 1284, 2778  # design coordinates; other sizes scale from here
-SIZES = {"6.5": (1284, 2778), "6.9": (1320, 2868)}
+BASE_W, BASE_H = 1284, 2778  # iPhone design coordinates; other iPhone sizes scale from here
+
+# device -> {size key: (width, height)}; the size key is also the output folder name.
+DEVICES = {
+    "iphone": {"6.5": (1284, 2778), "6.9": (1320, 2868)},
+    "ipad": {"ipad-13": (2064, 2752)},
+}
+
+# iPad layout, in canvas pixels for the 2064-wide canvas (the frame is much
+# wider and squarer, so the header is compact and the frame starts higher).
+IPAD_LAYOUT = dict(title_y=270, title_size=118, sub_y=470, sub_size=54,
+                   frame_y=620, frame_w=1440, radius=72, inset=28,
+                   card_w=1400, row_h=200, font=60)
 
 REPO = Path(__file__).resolve().parent.parent
-RAW_DIR = REPO / "marketing/raw"
+RAW_DIR = REPO / "marketing/raw"  # + /<device>/<locale>/
 OUT_DIR = REPO / "marketing/screenshots"
 
 FONT_LATIN = "/System/Library/Fonts/SFNSRounded.ttf"
@@ -44,7 +57,7 @@ FONT_ARABIC = "/System/Library/Fonts/SFArabicRounded.ttf"
 SS_PRIMARY = (47, 184, 133)
 SS_ACCENT = (23, 112, 130)
 
-# Store locale -> (raw capture folder, text language, fallback locale for copy).
+# Store locale -> (raw capture folder under marketing/raw/<device>/, text language, fallback locale for copy).
 # Captures are per store locale because the region changes the units on screen
 # (milligrams of sodium for en-US, grams of salt for en-GB).
 LOCALES = {
@@ -271,11 +284,12 @@ PHONE_RADIUS = 96
 SCREEN_INSET = 22
 
 
-def frame_screenshot(canvas: Image.Image, x: int, y: int, screen_path: Path, s: float) -> None:
-    """Stamp a phone-shaped bezel containing the real capture at (x, y)."""
-    phone_w = int(PHONE_W * s)
-    radius = int(PHONE_RADIUS * s)
-    inset = int(SCREEN_INSET * s)
+def frame_screenshot(canvas: Image.Image, x: int, y: int, screen_path: Path, s: float,
+                     frame_w: int | None = None, radius: int | None = None, inset: int | None = None) -> None:
+    """Stamp a device-shaped bezel containing the real capture at (x, y)."""
+    phone_w = frame_w if frame_w is not None else int(PHONE_W * s)
+    radius = radius if radius is not None else int(PHONE_RADIUS * s)
+    inset = inset if inset is not None else int(SCREEN_INSET * s)
 
     src = Image.open(screen_path).convert("RGBA")
     src_w, src_h = src.size
@@ -307,15 +321,18 @@ def frame_screenshot(canvas: Image.Image, x: int, y: int, screen_path: Path, s: 
     canvas.paste(screen, (x + inset, y + inset), mask)
 
 
-def draw_trust_card(canvas: Image.Image, bullets: list[str], lang: str, s: float, w: int) -> None:
-    """White card with check-marked statements, replacing the phone frame on slide 6."""
-    card_w = int(1100 * s)
-    row_h = int(190 * s)
+def draw_trust_card(canvas: Image.Image, bullets: list[str], lang: str, s: float, w: int,
+                    card_w: int | None = None, row_h: int | None = None, font_size: int | None = None,
+                    area_top: int | None = None) -> None:
+    """White card with check-marked statements, replacing the device frame on slide 6."""
+    card_w = card_w if card_w is not None else int(1100 * s)
+    row_h = row_h if row_h is not None else int(190 * s)
+    font_size = font_size if font_size is not None else int(58 * s)
     pad_y = int(80 * s)
     card_h = pad_y * 2 + row_h * len(bullets)
     x0 = (w - card_w) // 2
-    # Center the card in the area below the subtitle, where the phone frame sits on other slides.
-    area_top = int(820 * s)
+    # Center the card in the area below the subtitle, where the device frame sits on other slides.
+    area_top = area_top if area_top is not None else int(820 * s)
     area_h = canvas.height - area_top - int(160 * s)
     y0 = area_top + max(0, (area_h - card_h) // 2)
 
@@ -344,7 +361,7 @@ def draw_trust_card(canvas: Image.Image, bullets: list[str], lang: str, s: float
         cd.line([(cx - k * 0.9, cy), (cx - k * 0.2, cy + k * 0.7), (cx + k, cy - k * 0.6)],
                 fill=(255, 255, 255, 255), width=max(3, int(9 * s)), joint="curve")
         start_x = (cx - circle_r - gap) if rtl else (cx + circle_r + gap)
-        draw_mixed_line(cd, text, lang, int(58 * s), text_max, start_x, cy, rtl)
+        draw_mixed_line(cd, text, lang, font_size, text_max, start_x, cy, rtl)
 
     canvas.alpha_composite(card, (x0, y0))
 
@@ -399,51 +416,66 @@ def draw_mixed_line(cd, text, lang, size, max_width, start_x, cy, rtl):
 
 # ----- Slide composition ----------------------------------------------------
 
-def render_slide(slide: dict, locale: str, size_key: str) -> Image.Image:
-    w, h = SIZES[size_key]
-    s = w / BASE_W
-    raw_lang, lang, _ = LOCALES[locale]
-
+def render_slide(slide: dict, locale: str, device: str, size_key: str) -> Image.Image:
+    w, h = DEVICES[device][size_key]
+    raw_folder, lang, _ = LOCALES[locale]
     bg = diagonal_gradient(slide["bg"][0], slide["bg"][1], w, h).convert("RGBA")
     d = ImageDraw.Draw(bg)
 
-    title_size = int((110 if lang != "ar" else 96) * s)
-    sub_size = int(50 * s)
+    if device == "ipad":
+        L = IPAD_LAYOUT
+        s = w / 2064
+        title_size = int(L["title_size"] * (0.88 if lang == "ar" else 1))
+        title_y, sub_y, sub_size = L["title_y"], L["sub_y"], L["sub_size"]
+        frame = dict(x=(w - L["frame_w"]) // 2, y=L["frame_y"], frame_w=L["frame_w"], radius=L["radius"], inset=L["inset"])
+        card = dict(card_w=L["card_w"], row_h=L["row_h"], font_size=L["font"], area_top=L["frame_y"])
+        text_pad = 240
+    else:
+        s = w / BASE_W
+        title_size = int((110 if lang != "ar" else 96) * s)
+        title_y, sub_y, sub_size = int(360 * s), int(620 * s), int(50 * s)
+        frame = dict(x=(w - int(PHONE_W * s)) // 2, y=int(820 * s))
+        card = {}
+        text_pad = int(160 * s)
 
     draw_text_center(
-        d, (w // 2, int(360 * s)),
+        d, (w // 2, title_y),
         copy_for(slide, "title", locale),
         font(title_size, lang, "Black"),
         (255, 255, 255),
-        max_width=w - int(160 * s), lang=lang,
+        max_width=w - text_pad, lang=lang,
     )
     draw_text_center(
-        d, (w // 2, int(620 * s)),
+        d, (w // 2, sub_y),
         copy_for(slide, "subtitle", locale),
         font(sub_size, lang, "Regular"),
         (255, 255, 255, 220),
-        max_width=w - int(200 * s), lang=lang,
+        max_width=w - text_pad - int(40 * s), lang=lang,
     )
 
     if slide["raw"]:
-        raw = RAW_DIR / raw_lang / slide["raw"]
-        frame_screenshot(bg, x=(w - int(PHONE_W * s)) // 2, y=int(820 * s), screen_path=raw, s=s)
+        raw = RAW_DIR / device / raw_folder / slide["raw"]
+        frame_screenshot(bg, screen_path=raw, s=s, **frame)
     else:
-        draw_trust_card(bg, copy_for(slide, "bullets", locale), lang, s, w)
+        draw_trust_card(bg, copy_for(slide, "bullets", locale), lang, s, w, **card)
 
     return bg.convert("RGB")
 
 
 def main() -> None:
-    for locale in LOCALES:
-        for size_key in SIZES:
-            out = OUT_DIR / locale / size_key
-            out.mkdir(parents=True, exist_ok=True)
-            for i, slide in enumerate(SLIDES, start=1):
-                img = render_slide(slide, locale, size_key)
-                path = out / f"slide_{i}.png"
-                img.save(path, format="PNG", optimize=True)
-                print(f"wrote {path.relative_to(REPO)}")
+    for device, sizes in DEVICES.items():
+        if not (RAW_DIR / device).is_dir():
+            print(f"skip {device}: no captures in {RAW_DIR / device}")
+            continue
+        for locale in LOCALES:
+            for size_key in sizes:
+                out = OUT_DIR / locale / size_key
+                out.mkdir(parents=True, exist_ok=True)
+                for i, slide in enumerate(SLIDES, start=1):
+                    img = render_slide(slide, locale, device, size_key)
+                    path = out / f"slide_{i}.png"
+                    img.save(path, format="PNG", optimize=True)
+                    print(f"wrote {path.relative_to(REPO)}")
 
 
 if __name__ == "__main__":
