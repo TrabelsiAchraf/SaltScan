@@ -4,7 +4,7 @@
 //
 //  Rich product detail shown after a scan or from the History tab.
 //  Features: hero image, nutriscore, severity badge, nutrient grid,
-//  allergens/additives, favorite toggle, add-to-journal, share.
+//  allergens/additives, favorite toggle, add-to-journal (PortionSheet), share.
 //  Also the place where we ask for an App Store rating, after a positive
 //  moment (successful scan or journal entry), gated by ReviewGate.
 //
@@ -18,6 +18,9 @@ struct ProductDetailView: View {
     let barcode: String
     /// Preloaded entry (e.g. from History). If nil the view will fetch.
     var preloadedEntry: ScanEntry?
+    /// Day the "Add to journal" sheet starts on (nil = today). Set when the
+    /// product was opened from the Journal's "+".
+    var journalDay: Date? = nil
 
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
@@ -73,8 +76,8 @@ struct ProductDetailView: View {
         }
         .sheet(isPresented: $showJournalSheet, onDismiss: maybeRequestReview) {
             if let entry {
-                AddToJournalSheet(scan: entry)
-                    .presentationDetents([.medium])
+                PortionSheet(mode: .add(entry, day: journalDay ?? .now))
+                    .presentationDetents([.large])
             }
         }
         .sheet(isPresented: $showSearch) {
@@ -441,70 +444,6 @@ private struct FlowLayout: Layout {
             view.place(at: CGPoint(x: x, y: y), proposal: ProposedViewSize(s))
             x += s.width + spacing
             lineHeight = max(lineHeight, s.height)
-        }
-    }
-}
-
-// MARK: - Add to journal sheet
-
-struct AddToJournalSheet: View {
-    let scan: ScanEntry
-
-    @Environment(\.modelContext) private var context
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.saltFormatter) private var formatter
-    @State private var grams: Double
-
-    /// Starts on the manufacturer's serving when the database has one.
-    init(scan: ScanEntry) {
-        self.scan = scan
-        _grams = State(initialValue: scan.serving.defaultPortionGrams() ?? 30)
-    }
-
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: SSSpacing.lg) {
-                Text(scan.productName)
-                    .font(SSFont.title3())
-                    .multilineTextAlignment(.center)
-
-                SSScoreRing(
-                    progress: min(1, grams / 250),
-                    value: String(format: "%.0f g", grams),
-                    caption: "journal.portion.caption",
-                    color: .ssPrimary
-                )
-
-                Slider(value: $grams, in: 5...500, step: 5)
-                    .tint(Color.ssPrimary)
-
-                if let sodium100g = scan.sodium100g {
-                    let key = formatter.unit == .sodiumMilligrams ? "journal.portion.sodiumEstimate" : "journal.portion.saltEstimate"
-                    Text(String(format: key.localize, formatter.amount(sodiumGrams: sodium100g * grams / 100)))
-                        .font(SSFont.subheadline())
-                        .foregroundStyle(Color.ssTextSecondary)
-                }
-
-                SSButton(title: "journal.addPortion", icon: "checkmark.circle.fill") {
-                    let bucket = DailyIntake.bucket(for: .now, in: context)
-                    let line = IntakeLine(scan: scan, grams: grams)
-                    // Insert first, then explicitly establish the relationship.
-                    // Going through `bucket.lines.append` alone wasn't always
-                    // notifying @Query observers on the parent screens.
-                    context.insert(line)
-                    line.intake = bucket
-                    do {
-                        try context.save()
-                        ReviewGate.recordJournalAdd()
-                    } catch {
-                        assertionFailure("Failed to save intake: \(error)")
-                    }
-                    dismiss()
-                }
-            }
-            .padding(SSSpacing.lg)
-            .navigationTitle("journal.title")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
