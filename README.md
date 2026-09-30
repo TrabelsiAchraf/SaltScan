@@ -8,6 +8,15 @@ Native iOS app (SwiftUI) that scans food product barcodes and surfaces salt & nu
   <img src="marketing/screenshots/en-US/6.5/slide_3.png" width="220" />
 </p>
 
+## Links
+
+- Website: <https://trabelsiachraf.com/saltscan-site/>
+- Support: <https://trabelsiachraf.com/saltscan-site/support.html>
+- Privacy: <https://trabelsiachraf.com/saltscan-site/privacy.html>
+- Accessibility: <https://trabelsiachraf.com/saltscan-site/accessibility.html>
+- App Store: <https://apps.apple.com/app/id6740041173>
+- Website source: <https://github.com/TrabelsiAchraf/saltscan-site>
+
 ## Features
 
 - **Barcode scanner** — instant lookup via the Open Food Facts v2 API (only the fields the app renders), with Firebase Firestore fallback. Salt rating follows the UK traffic-light thresholds (≤ 0.3 g low, ≤ 1.5 g medium, above high, per 100 g).
