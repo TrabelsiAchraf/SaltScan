@@ -91,14 +91,6 @@ public enum PortionInput {
             formatter.locale = locale
             formatter.numberStyle = .decimal
             value = formatter.number(from: trimmed)?.doubleValue
-
-            // Fallback: try Arabic locale with arab numbers format
-            if value == nil && locale.identifier.contains("ar") {
-                let arabFormatter = NumberFormatter()
-                arabFormatter.locale = Locale(identifier: "ar@numbers=arab")
-                arabFormatter.numberStyle = .decimal
-                return arabFormatter.number(from: trimmed)?.doubleValue
-            }
         }
         guard let value, value.isFinite, value >= 0 else { return nil }
         return value
