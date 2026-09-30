@@ -1,0 +1,14 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSHealthUpdateUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {"stringUnit": {"state": "translated", "value": "يحفظ Salt Scan كمية الصوديوم في كل حصة من يومياتك في تطبيق صحة Apple، فقط إذا فعّلت ذلك في الإعدادات."}},
+        "en": {"stringUnit": {"state": "translated", "value": "Salt Scan saves the sodium of each journal portion to Apple Health, only if you turn it on in Settings."}},
+        "fr": {"stringUnit": {"state": "translated", "value": "Salt Scan enregistre le sodium de chaque portion de votre journal dans l'app Santé, uniquement si vous l'activez dans les Réglages."}}
+      }
+    }
+  },
+  "version": "1.0"
+}
