@@ -8,7 +8,19 @@ import SwiftData
 import SaltScanCore
 
 struct HomeView: View {
-    var onScanTapped: () -> Void = {}
+    var onScanTapped: () -> Void
+
+    /// Today's portions, newest first, on the same `DayRange` as the Journal screen.
+    init(onScanTapped: @escaping () -> Void = {}) {
+        self.onScanTapped = onScanTapped
+        let today = DayRange(containing: .now)
+        let start = today.start
+        let end = today.end
+        _todayLines = Query(
+            filter: #Predicate<IntakeLine> { $0.addedAt >= start && $0.addedAt < end },
+            sort: [SortDescriptor(\IntakeLine.addedAt, order: .reverse)]
+        )
+    }
 
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
     @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
@@ -25,16 +37,9 @@ struct HomeView: View {
 
     // Query individual lines (not the parent bucket) so the @Query
     // invalidates as soon as a portion is added, edited or deleted.
-    @Query(sort: [SortDescriptor(\IntakeLine.addedAt, order: .reverse)])
-    private var allLines: [IntakeLine]
+    @Query private var todayLines: [IntakeLine]
 
     @State private var editingLine: IntakeLine?
-
-    /// Today's portions, newest first, on the same `DayRange` as the Journal screen.
-    private var todayLines: [IntakeLine] {
-        let today = DayRange(containing: .now)
-        return allLines.filter { today.contains($0.addedAt) }
-    }
 
     private let timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
 
@@ -117,6 +122,7 @@ struct HomeView: View {
                     )
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(Text(intakeTitleKey) + Text(", ") + Text(formatter.amount(sodiumGrams: todaySodium, precision: .total)))
                 .accessibilityHint(Text("home.today.openJournal"))
                 VStack(alignment: .leading, spacing: SSSpacing.xs) {
                     Text(intakeTitleKey)

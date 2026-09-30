@@ -1699,6 +1699,29 @@
         }
       }
     },
+    "detail.action.addToJournalOnDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أضف إلى اليوميات · %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to the journal · %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouter au journal · %@"
+          }
+        }
+      }
+    },
     "detail.action.favorite": {
       "extractionState": "manual",
       "localizations": {

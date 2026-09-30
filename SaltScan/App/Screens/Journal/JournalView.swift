@@ -131,6 +131,7 @@ private struct JournalDayList: View {
     @Environment(\.saltFormatter) private var formatter
     @Environment(\.modelContext) private var context
     @State private var editing: IntakeLine?
+    @State private var showDeleteError = false
 
     init(day: Date, onAdd: @escaping () -> Void) {
         self.day = day
@@ -168,7 +169,11 @@ private struct JournalDayList: View {
                         .buttonStyle(.plain)
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
-                                try? JournalStore(context: context).delete(line)
+                                do {
+                                    try JournalStore(context: context).delete(line)
+                                } catch {
+                                    showDeleteError = true
+                                }
                             } label: {
                                 Label("journal.line.delete", systemImage: "trash")
                             }
@@ -183,6 +188,11 @@ private struct JournalDayList: View {
         .sheet(item: $editing) { line in
             PortionSheet(mode: .edit(line))
                 .presentationDetents([.large])
+        }
+        .alert("journal.portion.saveFailed.title", isPresented: $showDeleteError) {
+            Button("journal.portion.saveFailed.ok", role: .cancel) {}
+        } message: {
+            Text("journal.portion.saveFailed.message")
         }
     }
 

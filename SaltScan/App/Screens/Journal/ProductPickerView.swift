@@ -76,9 +76,11 @@ struct ProductPickerView: View {
             }
             .fullScreenCover(isPresented: $showScanner) {
                 ProductScannerView(journalDay: day)
+                    .environment(\.journalAddCompletion, { dismiss() })
             }
             .sheet(isPresented: $showSearch) {
                 ProductSearchView(journalDay: day)
+                    .environment(\.journalAddCompletion, { dismiss() })
             }
         }
     }

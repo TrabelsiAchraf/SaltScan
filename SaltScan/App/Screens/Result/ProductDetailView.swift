@@ -25,6 +25,7 @@ struct ProductDetailView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @Environment(\.requestReview) private var requestReview
+    @Environment(\.journalAddCompletion) private var journalAddCompletion
     @Environment(\.saltFormatter) private var formatter
     @StateObject private var viewModel = ResultViewModel()
     @State private var showJournalSheet = false
@@ -76,7 +77,7 @@ struct ProductDetailView: View {
         }
         .sheet(isPresented: $showJournalSheet, onDismiss: maybeRequestReview) {
             if let entry {
-                PortionSheet(mode: .add(entry, day: journalDay ?? .now))
+                PortionSheet(mode: .add(entry, day: journalDay ?? .now), onFinished: { journalAddCompletion?() })
                     .presentationDetents([.large])
             }
         }
@@ -214,11 +215,22 @@ struct ProductDetailView: View {
         }
     }
 
+    /// "Add to today's journal", or the date when the product was opened for another day.
+    private var addToJournalTitle: LocalizedStringKey {
+        if let journalDay, JournalDay.relative(journalDay) != .today {
+            return LocalizedStringKey(String(
+                format: "detail.action.addToJournalOnDay".localize,
+                journalDay.formatted(date: .abbreviated, time: .omitted)
+            ))
+        }
+        return "detail.action.addToJournal"
+    }
+
     @ViewBuilder
     private func actionsSection(_ entry: ScanEntry) -> some View {
         VStack(spacing: SSSpacing.sm) {
             SSButton(
-                title: "detail.action.addToJournal",
+                title: addToJournalTitle,
                 icon: "plus.circle.fill",
                 style: .primary
             ) {
