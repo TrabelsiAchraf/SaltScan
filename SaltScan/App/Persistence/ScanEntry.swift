@@ -46,8 +46,9 @@ final class ScanEntry {
     var scannedAt: Date
     var isFavorite: Bool
 
-    /// Back-reference to journal entries that consumed this product.
-    @Relationship(deleteRule: .cascade, inverse: \IntakeLine.scan)
+    /// Back-reference to journal entries that consumed this product. Deleting
+    /// the product keeps them: each line carries its own name and sodium.
+    @Relationship(deleteRule: .nullify, inverse: \IntakeLine.scan)
     var intakeLines: [IntakeLine] = []
 
     init(

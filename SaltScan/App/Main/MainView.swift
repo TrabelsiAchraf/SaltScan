@@ -12,6 +12,8 @@ import SaltScanCore
 struct MainView: View {
     @AppStorage(SaltUnitPreference.storageKey) private var unitPreference: SaltUnitPreference = .automatic
     @State private var showScanner: Bool = false
+    @State private var showStoreFailure = SaltScanModelContainer.didFallBackToMemory
+    @State private var showContactFromFailure = false
     @State private var selectedTab: Tab = .home
     @State private var screenshotDetailEntry: ScanEntry?
     @State private var screenshotDetailEntryFullScreen: ScanEntry?
@@ -61,6 +63,15 @@ struct MainView: View {
         .environment(\.saltFormatter, unitPreference.formatter)
         .fullScreenCover(isPresented: $showScanner) {
             ProductScannerView()
+        }
+        .alert("storeFailure.title", isPresented: $showStoreFailure) {
+            Button("storeFailure.contact") { showContactFromFailure = true }
+            Button("storeFailure.dismiss", role: .cancel) {}
+        } message: {
+            Text("storeFailure.message")
+        }
+        .sheet(isPresented: $showContactFromFailure) {
+            NavigationStack { ContactUsView() }
         }
 #if DEBUG
         .sheet(item: $screenshotDetailEntry) { entry in

@@ -14,6 +14,9 @@ struct SaltScanApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     init() {
+        // Opens (and migrates) the store before the first view reads it, then
+        // gives pre-0.5.0 journal lines their identifier and product copy.
+        JournalBackfill.run(in: SaltScanModelContainer.shared.mainContext)
 #if DEBUG
         // Seed deterministic demo data on launch when running under the
         // marketing-screenshot harness (tools/take_screenshots.sh).
