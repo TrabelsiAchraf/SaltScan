@@ -31,6 +31,7 @@ struct PortionSheet: View {
     @State private var servings: Double
     @State private var gramsText: String
     @State private var day: Date
+    @State private var showSaveError = false
     @FocusState private var gramsFieldFocused: Bool
 
     private let productName: String
@@ -142,6 +143,11 @@ struct PortionSheet: View {
             }
             .onChange(of: inputMode) { oldMode, newMode in
                 carryAmount(from: oldMode, to: newMode)
+            }
+            .alert("journal.portion.saveFailed.title", isPresented: $showSaveError) {
+                Button("journal.portion.saveFailed.ok", role: .cancel) {}
+            } message: {
+                Text("journal.portion.saveFailed.message")
             }
         }
     }
@@ -311,6 +317,7 @@ struct PortionSheet: View {
                 try store.update(line, grams: grams, day: day)
             }
         } catch {
+            showSaveError = true
             return
         }
         onFinished()
@@ -322,6 +329,7 @@ struct PortionSheet: View {
         do {
             try JournalStore(context: context).delete(line)
         } catch {
+            showSaveError = true
             return
         }
         onFinished()

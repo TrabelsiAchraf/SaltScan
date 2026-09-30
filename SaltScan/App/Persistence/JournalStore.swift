@@ -52,6 +52,8 @@ struct JournalStore {
         do {
             try context.save()
         } catch {
+            // Drop the pending insert/edit/delete so a retry can't persist it twice.
+            context.rollback()
             assertionFailure("Journal save failed: \(error)")
             throw error
         }
