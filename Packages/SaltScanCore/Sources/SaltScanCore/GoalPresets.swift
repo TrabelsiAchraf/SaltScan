@@ -33,16 +33,20 @@ public struct GoalPreset: Identifiable, Sendable, Equatable {
 }
 
 public enum GoalPresets {
+    public static func preset(_ kind: GoalPreset.Kind) -> GoalPreset {
+        switch kind {
+        case .who: GoalPreset(kind: .who, saltGrams: 5)
+        case .uk: GoalPreset(kind: .uk, saltGrams: 6)
+        case .aha: GoalPreset(kind: .aha, saltGrams: SaltMath.salt(fromSodiumGrams: 1.5))
+        case .whoSodium: GoalPreset(kind: .whoSodium, saltGrams: SaltMath.salt(fromSodiumGrams: 2.0))
+        case .fda: GoalPreset(kind: .fda, saltGrams: SaltMath.salt(fromSodiumGrams: 2.3))
+        }
+    }
+
     public static func presets(for unit: SaltUnit) -> [GoalPreset] {
         switch unit {
-        case .saltGrams:
-            return [GoalPreset(kind: .who, saltGrams: 5), GoalPreset(kind: .uk, saltGrams: 6)]
-        case .sodiumMilligrams:
-            return [
-                GoalPreset(kind: .aha, saltGrams: SaltMath.salt(fromSodiumGrams: 1.5)),
-                GoalPreset(kind: .whoSodium, saltGrams: SaltMath.salt(fromSodiumGrams: 2.0)),
-                GoalPreset(kind: .fda, saltGrams: SaltMath.salt(fromSodiumGrams: 2.3)),
-            ]
+        case .saltGrams: [preset(.who), preset(.uk)]
+        case .sodiumMilligrams: [preset(.aha), preset(.whoSodium), preset(.fda)]
         }
     }
 
