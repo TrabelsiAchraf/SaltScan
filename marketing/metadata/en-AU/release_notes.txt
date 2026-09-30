@@ -4,7 +4,7 @@ Also in this update:
 • Enter a portion in servings (½, 1, 1½…) or type the exact grams, with one-tap shortcuts
 • A "Today" section on Home lists what you logged
 • Deleting a product from History no longer changes your past days
-• Save your salt intake to Apple Health (as sodium)
+• Save your salt intake to Apple Health (as sodium; optional, off by default)
 • A starting daily goal based on why you watch your salt
 
 Thank you for the feedback that shaped this version. If Salt Scan helps you, a rating helps other people find it.
