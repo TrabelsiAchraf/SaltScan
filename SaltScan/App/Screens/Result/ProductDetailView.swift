@@ -81,7 +81,7 @@ struct ProductDetailView: View {
             }
         }
         .sheet(isPresented: $showSearch) {
-            ProductSearchView()
+            ProductSearchView(journalDay: journalDay)
         }
     }
 

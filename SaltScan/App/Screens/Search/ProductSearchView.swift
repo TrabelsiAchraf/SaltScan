@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct ProductSearchView: View {
+    /// Day a portion added from a result goes to (nil = today).
+    var journalDay: Date? = nil
+
     @StateObject private var viewModel = ProductSearchViewModel()
     @State private var query: String = ""
 
@@ -26,7 +29,7 @@ struct ProductSearchView: View {
                 } else {
                     List(viewModel.results, id: \.code) { item in
                         NavigationLink {
-                            ProductDetailView(barcode: item.code)
+                            ProductDetailView(barcode: item.code, journalDay: journalDay)
                         } label: {
                             VStack(alignment: .leading) {
                                 Text(item.productName ?? item.code)

@@ -36,6 +36,9 @@ private final class AtomicBool {
 
 struct ProductScannerView: View {
     @Environment(\.dismiss) private var dismiss
+
+    /// Day a portion added from the scanned product goes to (nil = today).
+    var journalDay: Date? = nil
     @State private var scanned: ScannedBarcode?
     @State private var showSearch = false
     @State private var captureSession = AVCaptureSession()
@@ -88,12 +91,12 @@ struct ProductScannerView: View {
                     .padding(.bottom, SSSpacing.xxl)
             }
             .sheet(isPresented: $showSearch) {
-                ProductSearchView()
+                ProductSearchView(journalDay: journalDay)
             }
         }
         .sheet(item: $scanned, onDismiss: resumeCapture) { item in
             NavigationStack {
-                ProductDetailView(barcode: item.value)
+                ProductDetailView(barcode: item.value, journalDay: journalDay)
                     .toolbar {
                         ToolbarItem(placement: .topBarTrailing) {
                             Button("result.product.button.rescan") {
