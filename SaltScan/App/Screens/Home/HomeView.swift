@@ -245,7 +245,8 @@ struct HomeView: View {
 
     private func setHasSeenOnboardingFlag() {
 #if DEBUG
-        showOnboarding = false
+        // Hidden in DEBUG unless launched with `-forceOnboarding YES`.
+        showOnboarding = UserDefaults.standard.bool(forKey: "forceOnboarding")
 #else
         if !hasSeenOnboarding {
             showOnboarding = true

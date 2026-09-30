@@ -2,91 +2,131 @@
 //  OnboardingView.swift
 //  SaltScan
 //
-//  Created by Achraf Trabelsi on 29/12/2024.
+//  First launch only: asks why the user watches salt, then proposes a daily
+//  goal from that answer (adjustable with the usual presets). The answer is
+//  stored on the device only. "Skip" keeps the default 5 g goal.
 //
 
 import SwiftUI
+import SaltScanCore
 
 struct OnboardingView: View {
     @Environment(\.dismiss) private var dismiss
-    private let buttonTapImpactFeedback = UIImpactFeedbackGenerator(style: .light)
-    
+    @Environment(\.saltFormatter) private var formatter
+    @AppStorage("dailySaltGoalGrams") private var goalGrams: Double = 5.0
+    @AppStorage(SaltMotivation.storageKey) private var motivationRaw: String = ""
+    @State private var motivation: SaltMotivation?
+    @State private var proposedGoal: Double = 5.0
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
+
     var body: some View {
-        VStack {
+        NavigationStack {
+            Group {
+                if motivation == nil {
+                    motivationStep
+                } else {
+                    goalStep
+                }
+            }
+            .background(Color.ssGroupedBackground)
+            .toolbar {
+                if motivation == nil {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("onboarding.skip") { dismiss() }
+                    }
+                } else {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            withAnimation { motivation = nil }
+                        } label: {
+                            Image(systemName: "chevron.backward")
+                        }
+                        .accessibilityLabel(Text("onboarding.back"))
+                    }
+                }
+            }
+        }
+        .onAppear { haptic.prepare() }
+    }
+
+    // MARK: - Steps
+
+    private var motivationStep: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: SSSpacing.md) {
+                Text("onboarding.motivation.title")
+                    .font(SSFont.largeTitle())
+                Text("onboarding.motivation.subtitle")
+                    .font(SSFont.subheadline())
+                    .foregroundStyle(Color.ssTextSecondary)
+                ForEach(SaltMotivation.allCases) { option in
+                    Button { choose(option) } label: {
+                        SSCard(padding: SSSpacing.md) {
+                            HStack(spacing: SSSpacing.md) {
+                                Image(systemName: option.icon)
+                                    .font(.title2)
+                                    .foregroundStyle(Color.ssPrimary)
+                                    .frame(width: 32)
+                                Text(option.titleKey)
+                                    .font(SSFont.headline())
+                                    .foregroundStyle(Color.ssTextPrimary)
+                                Spacer()
+                                Image(systemName: "chevron.forward")
+                                    .foregroundStyle(Color.ssTextTertiary)
+                            }
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(SSSpacing.md)
+            .ssReadableWidth()
+        }
+    }
+
+    private var goalStep: some View {
+        VStack(spacing: SSSpacing.lg) {
             Spacer()
-            
-            Text("onboarding.title")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+            Text("onboarding.goal.title")
+                .font(SSFont.title())
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 22)
-            
-            OnboardingItem(
-                icon: "cart.fill",
-                title: "onboarding.tuto.item0.title",
-                description: "onboarding.tuto.item0.description"
+            SSScoreRing(
+                progress: 1,
+                value: formatter.goal(saltGrams: proposedGoal),
+                caption: "onboarding.goal.caption",
+                size: 160
             )
-            OnboardingItem(
-                icon: "waveform.path.ecg",
-                title: "onboarding.tuto.item1.title",
-                description: "onboarding.tuto.item1.description"
-            )
-            OnboardingItem(
-                icon: "star.fill",
-                title: "onboarding.tuto.item2.title",
-                description: "onboarding.tuto.item2.description"
-            )
-            
+            GoalPresetChips(goalGrams: $proposedGoal, unit: formatter.unit)
+            Text("onboarding.goal.disclaimer")
+                .font(SSFont.caption())
+                .foregroundStyle(Color.ssTextSecondary)
+                .multilineTextAlignment(.center)
             Spacer()
-            
-            SSButton(
-                title: "onboarding.button.start",
-                icon: "arrow.right.circle.fill"
-            ) {
-                buttonTapImpactFeedback.impactOccurred()
-                dismiss()
+            SSButton(title: "onboarding.button.start", icon: "arrow.right.circle.fill") {
+                finish()
             }
-            .padding()
         }
-        .onAppear {
-            prepareHaptic()
-        }
+        .padding(SSSpacing.lg)
+        .ssReadableWidth()
     }
-    
-    // MARK: - Private
-    
-    private func prepareHaptic() {
-        buttonTapImpactFeedback.prepare()
+
+    // MARK: - Actions
+
+    private func choose(_ option: SaltMotivation) {
+        haptic.impactOccurred()
+        proposedGoal = MotivationPresets.goal(
+            for: option,
+            unit: formatter.unit,
+            regionCode: Locale.current.region?.identifier
+        ).saltGrams
+        withAnimation { motivation = option }
     }
-}
 
-// MARK: - OnboardingItem
-
-struct OnboardingItem: View {
-    let icon: String
-    let title: LocalizedStringKey
-    let description: LocalizedStringKey
-    
-    var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .font(.title)
-                .padding(.trailing)
-                .foregroundStyle(.blue)
-            
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                Text(description)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-            .padding(.vertical)
-            
-            Spacer()
-        }
-        .padding(.horizontal)
+    private func finish() {
+        haptic.impactOccurred()
+        goalGrams = proposedGoal
+        motivationRaw = motivation?.rawValue ?? ""
+        dismiss()
     }
 }
 
@@ -98,5 +138,6 @@ struct OnboardingItem: View {
 #Preview {
     OnboardingView()
         .preferredColorScheme(.dark)
-        .environment(\.locale, Locale(identifier: "en"))
+        .environment(\.locale, Locale(identifier: "ar"))
+        .environment(\.layoutDirection, .rightToLeft)
 }
