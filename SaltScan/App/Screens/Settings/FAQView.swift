@@ -48,6 +48,14 @@ struct FAQView: View {
         (
             "FAQ.description.item10.title".localize,
             "FAQ.description.item10.description".localize
+        ),
+        (
+            "FAQ.description.item11.title".localize,
+            "FAQ.description.item11.description".localize
+        ),
+        (
+            "FAQ.description.item12.title".localize,
+            "FAQ.description.item12.description".localize
         )
     ]
     
