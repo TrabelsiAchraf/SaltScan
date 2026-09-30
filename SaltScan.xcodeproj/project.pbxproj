@@ -283,7 +283,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SaltScan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 300920261256;
+				CURRENT_PROJECT_VERSION = 300920261324;
 				DEVELOPMENT_ASSET_PATHS = "\"SaltScan/Configuration/Preview Content\"";
 				DEVELOPMENT_TEAM = D44ZSJA8CM;
 				ENABLE_PREVIEWS = YES;
@@ -292,6 +292,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Salt Scan";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to scan barcodes.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Salt Scan never reads your Health data. It only saves the sodium of your journal portions to Apple Health, if you turn it on in Settings.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Salt Scan saves the sodium of each journal portion to Apple Health, only if you turn it on in Settings.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -320,7 +321,7 @@
 				CODE_SIGN_ENTITLEMENTS = SaltScan.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 300920261256;
+				CURRENT_PROJECT_VERSION = 300920261324;
 				DEVELOPMENT_ASSET_PATHS = "\"SaltScan/Configuration/Preview Content\"";
 				DEVELOPMENT_TEAM = QN66UQNDZR;
 				ENABLE_PREVIEWS = YES;
@@ -329,6 +330,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Salt Scan";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to scan barcodes.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Salt Scan never reads your Health data. It only saves the sodium of your journal portions to Apple Health, if you turn it on in Settings.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Salt Scan saves the sodium of each journal portion to Apple Health, only if you turn it on in Settings.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

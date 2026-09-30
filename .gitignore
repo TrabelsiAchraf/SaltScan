@@ -92,3 +92,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 *.xcuserstate
+
+# asc CLI artifacts (archives, IPA, export logs)
+.asc/
