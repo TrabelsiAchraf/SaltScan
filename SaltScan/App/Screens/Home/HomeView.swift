@@ -24,17 +24,23 @@ struct HomeView: View {
     ) private var allScans: [ScanEntry]
 
     // Query individual lines (not the parent bucket) so the @Query
-    // invalidates as soon as a new portion is added.
-    @Query private var allLines: [IntakeLine]
+    // invalidates as soon as a portion is added, edited or deleted.
+    @Query(sort: [SortDescriptor(\IntakeLine.addedAt, order: .reverse)])
+    private var allLines: [IntakeLine]
+
+    @State private var editingLine: IntakeLine?
+
+    /// Today's portions, newest first, on the same `DayRange` as the Journal screen.
+    private var todayLines: [IntakeLine] {
+        let today = DayRange(containing: .now)
+        return allLines.filter { today.contains($0.addedAt) }
+    }
 
     private let timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
 
     /// Today's sodium in grams; salt is derived from it for the goal ring.
     private var todaySodium: Double {
-        let cal = Calendar.current
-        return allLines
-            .filter { cal.isDateInToday($0.addedAt) }
-            .reduce(0) { $0 + $1.sodiumGrams }
+        todayLines.reduce(0) { $0 + $1.sodiumGrams }
     }
 
     private var todaySalt: Double { SaltMath.salt(fromSodiumGrams: todaySodium) }
@@ -50,6 +56,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: SSSpacing.lg) {
                 header
                 dailyRingCard
+                todaySection
                 latestScansSection
                 articlesSection
                 Spacer(minLength: SSSpacing.xl)
@@ -73,6 +80,10 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showOnboarding) { OnboardingView() }
         .sheet(isPresented: $showSearch) { ProductSearchView() }
+        .sheet(item: $editingLine) { line in
+            PortionSheet(mode: .edit(line))
+                .presentationDetents([.large])
+        }
         .onAppear {
             setHasSeenOnboardingFlag()
             articlesViewModel.loadArticles()
@@ -94,13 +105,19 @@ struct HomeView: View {
     private var dailyRingCard: some View {
         SSCard {
             HStack(spacing: SSSpacing.lg) {
-                SSScoreRing(
-                    progress: goalGrams > 0 ? todaySalt / goalGrams : 0,
-                    value: formatter.amount(sodiumGrams: todaySodium, precision: .total),
-                    caption: "home.dailyIntake.caption",
-                    color: todaySalt > goalGrams ? .ssSeverityHigh : .ssPrimary,
-                    size: 130
-                )
+                NavigationLink {
+                    JournalView()
+                } label: {
+                    SSScoreRing(
+                        progress: goalGrams > 0 ? todaySalt / goalGrams : 0,
+                        value: formatter.amount(sodiumGrams: todaySodium, precision: .total),
+                        caption: "home.dailyIntake.caption",
+                        color: todaySalt > goalGrams ? .ssSeverityHigh : .ssPrimary,
+                        size: 130
+                    )
+                }
+                .buttonStyle(.plain)
+                .accessibilityHint(Text("home.today.openJournal"))
                 VStack(alignment: .leading, spacing: SSSpacing.xs) {
                     Text(intakeTitleKey)
                         .font(SSFont.headline())
@@ -118,6 +135,42 @@ struct HomeView: View {
                         style: .ghost,
                         size: .compact
                     ) { showSearch = true }
+                }
+            }
+        }
+    }
+
+    private var todaySection: some View {
+        VStack(alignment: .leading, spacing: SSSpacing.sm) {
+            HStack {
+                SSSectionHeader(title: "home.today.title")
+                Spacer()
+                if !todayLines.isEmpty {
+                    NavigationLink {
+                        JournalView()
+                    } label: {
+                        Text(String(format: "home.today.seeAll".localize, todayLines.count))
+                            .font(SSFont.subheadline().weight(.semibold))
+                            .foregroundStyle(Color.ssPrimary)
+                    }
+                }
+            }
+            SSCard(padding: SSSpacing.sm, elevated: false) {
+                if todayLines.isEmpty {
+                    Text("home.today.empty")
+                        .font(SSFont.subheadline())
+                        .foregroundStyle(Color.ssTextSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    VStack(spacing: SSSpacing.xs) {
+                        ForEach(Array(todayLines.prefix(5).enumerated()), id: \.element.id) { index, line in
+                            if index > 0 { Divider() }
+                            Button { editingLine = line } label: {
+                                JournalLineRow(line: line)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
                 }
             }
         }
