@@ -1,13 +1,10 @@
-La recherche par nom et la comparaison de produits côte à côte sont désormais à un geste, depuis l'accueil, le scanner et l'historique.
+Votre journal du jour devient entièrement modifiable. Touchez votre anneau pour voir chaque portion de la journée, changer une quantité, la déplacer à un autre jour ou la supprimer d'un glissement. Revenez sur n'importe quel jour passé pour ajouter ce que vous aviez oublié.
 
 Aussi dans cette version :
-• Sodium en milligrammes et par portion, avec la part de la valeur quotidienne de 2 300 mg, pour les États-Unis et le Canada (ou au choix dans les Réglages)
-• La portion du journal démarre sur la portion du fabricant
-• Les valeurs douteuses de la base sont signalées au lieu d'être affichées comme vraies
-• Recherches plus rapides : seuls les champs utiles sont téléchargés
-• Repère de sel aligné sur les seuils des feux tricolores (faible jusqu'à 0,3 g pour 100 g)
-• Une issue quand un produit est introuvable : recherche par nom ou ajout sur Open Food Facts
-• Numéro de version correct dans les Réglages et FAQ à jour
-• Plus de publicité ni d'analytics : l'app est gratuite et ne vous dérange pas
+• Saisissez une portion en nombre de portions (½, 1, 1½…) ou tapez les grammes exacts, avec des raccourcis en un geste
+• Une section « Aujourd'hui » sur l'accueil liste ce que vous avez ajouté
+• Supprimer un produit de l'historique ne modifie plus vos jours passés
+• Enregistrez votre sodium dans l'app Santé (facultatif, désactivé par défaut)
+• Un objectif quotidien de départ selon la raison pour laquelle vous surveillez le sel
 
-Si Salt Scan vous aide à manger moins salé, une note aide d'autres personnes à le trouver.
+Merci pour vos retours, qui ont façonné cette version. Si Salt Scan vous aide, une note aide d'autres personnes à le trouver.

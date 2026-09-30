@@ -1,6 +1,6 @@
 # Feuille de route Salt Scan
 
-Dernière mise à jour : 4 septembre 2026. La 0.4.0 est fusionnée dans `master`, prête à archiver.
+Dernière mise à jour : 29 septembre 2026. La 0.5.0 (journal modifiable par jour, saisie en portions, export Santé, onboarding par motivation) est prête sur `release/0.5.0`.
 Les métadonnées à coller dans App Store Connect sont dans `marketing/metadata/`, la checklist de
 soumission dans `marketing/metadata/README.md`.
 
@@ -26,7 +26,7 @@ Sans SDK d'analytics dans l'app, App Store Connect › Analyses reste la seule s
 
 Ordre proposé, du plus rentable au plus coûteux.
 
-### 1. Onboarding par motivation (1 jour)
+### 1. Onboarding par motivation (1 jour) — livré en 0.5.0
 
 Au premier lancement, une question : « Pourquoi surveillez-vous le sel ? » avec tension artérielle,
 reins, cœur, grossesse, simple curiosité. La réponse prérègle l'objectif et l'unité :
@@ -39,7 +39,7 @@ reins, cœur, grossesse, simple curiosité. La réponse prérègle l'objectif et
 
 Remplace l'onboarding actuel à trois puces. La motivation n'est stockée que sur l'appareil.
 
-### 2. Widget « anneau du jour » (2 à 3 jours)
+### 2. Widget « anneau du jour » (2 à 3 jours) — reporté en 0.5.x
 
 WidgetKit, tailles petite et moyenne, plus l'accessoire circulaire de l'écran verrouillé.
 Rafraîchi à chaque ajout au journal (`WidgetCenter.reloadAllTimelines`).
@@ -49,7 +49,7 @@ Prérequis technique : partager la base SwiftData avec l'extension via un App Gr
 premier lancement. C'est le point délicat : prévoir une copie du fichier de base puis un basculement,
 avec repli sur l'ancien emplacement en cas d'échec.
 
-### 3. Export vers l'app Santé (1 jour)
+### 3. Export vers l'app Santé (1 jour) — livré en 0.5.0
 
 Écrire `HKQuantityTypeIdentifier.dietarySodium` (en mg) à chaque ligne de journal, effacer la
 donnée correspondante quand une ligne est supprimée. Option désactivée par défaut dans les Réglages,
@@ -73,6 +73,12 @@ l'active : la ligne directrice de l'app reste « gratuite et sans dérangement �
   dizaine de Mo et supprime `GoogleService-Info.plist`.
 - **Tests** : déplacer la logique de `ReviewGate` dans `SaltScanCore` pour la tester ; ajouter
   des tests sur `makeScanEntry` (bridge Open Food Facts → `ScanEntry`).
+
+## Retours utilisateurs traités en 0.5.0
+
+Deux messages reçus via le formulaire de contact (septembre 2026) : impossible de supprimer ou de
+réduire une portion, impossible de voir et d'ajuster les éléments du jour. Réponses envoyées ;
+prévenir les deux personnes quand la 0.5.0 est en ligne.
 
 ## 0.6 et au-delà : idées à trier
 

@@ -48,3 +48,12 @@ en-GB / en-CA / en-AU localizations.
 6. After release: watch App Store Connect › Analytics (impressions, product page
    views, conversion rate) per territory and per source, against the pre-release
    baseline.
+
+## 0.5.0
+
+- [ ] Xcode › target SaltScan › Signing & Capabilities : HealthKit apparaît (fichier `SaltScan.entitlements`) ; la signature automatique met à jour l'App ID `com.tadevv.SaltScan`.
+- [ ] Installer la build TestFlight par-dessus la version App Store sur son iPhone, avec ses vraies données : journal, historique et favoris intacts.
+- [ ] Mettre à jour la politique de confidentialité en ligne (paragraphe « Apple Health », identique à celui de l'app).
+- [ ] App Store Connect › Confidentialité de l'app : l'étiquette « Données non collectées » reste exacte (les données vont de l'appareil à Santé).
+- [ ] Coller les notes de version de chaque locale.
+- [ ] Après la mise en ligne : prévenir les deux utilisateurs dont les retours ont mené à cette version.

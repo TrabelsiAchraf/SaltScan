@@ -1,13 +1,10 @@
-Search any product by name and compare products side by side are now one tap away, from Home, the scanner and History.
+Your daily journal, now fully editable. Tap your ring to see every portion of the day, change an amount, move it to another day, or swipe it away. Go back to any past day and add what you forgot.
 
 Also in this update:
-• Sodium in milligrams and per serving, with the share of the 2,300 mg daily value, for the US and Canada (or by choice in Settings)
-• The journal portion starts from the manufacturer's serving
-• Doubtful database values are flagged instead of shown as fact
-• Faster lookups: only the fields the app needs are downloaded
-• Salt rating aligned with the UK traffic-light thresholds (low is up to 0.3 g per 100 g)
-• A way forward when a product isn't found: search by name or add it to Open Food Facts
-• Correct version number in Settings and an up-to-date FAQ
-• No more ads and no analytics: the app is free and stays out of your way
+• Enter a portion in servings (½, 1, 1½…) or type the exact grams, with one-tap shortcuts
+• A "Today" section on Home lists what you logged
+• Deleting a product from History no longer changes your past days
+• Save your sodium to Apple Health (optional, off by default)
+• A starting daily goal based on why you watch your sodium
 
-If Salt Scan helps you eat less salt, a rating helps other people find it.
+Thank you for the feedback that shaped this version. If Salt Scan helps you, a rating helps other people find it.
