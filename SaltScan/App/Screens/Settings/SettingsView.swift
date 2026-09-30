@@ -81,7 +81,7 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: SSSpacing.xxs) {
                         Text("settings.health.footer")
                         if healthEnabled, healthLastExportCount >= 0 {
-                            Text(String(format: "settings.health.lastExport".localize, healthLastExportCount))
+                            Text(String(format: "settings.health.lastExport".localize, locale: .current, healthLastExportCount))
                         }
                     }
                 }

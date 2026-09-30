@@ -53,8 +53,8 @@ avec repli sur l'ancien emplacement en cas d'échec.
 
 Écrire `HKQuantityTypeIdentifier.dietarySodium` (en mg) à chaque ligne de journal, effacer la
 donnée correspondante quand une ligne est supprimée. Option désactivée par défaut dans les Réglages,
-permission HealthKit demandée à l'activation. Nécessite la capability HealthKit et les clés
-`NSHealthShareUsageDescription` / `NSHealthUpdateUsageDescription`.
+permission HealthKit demandée à l'activation. Nécessite la capability HealthKit et la clé
+`NSHealthUpdateUsageDescription` (export en écriture seule, pas de `NSHealthShareUsageDescription`).
 
 ### 4. Rappel de fin de journée (à décider, opt-in seulement)
 

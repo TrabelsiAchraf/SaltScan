@@ -8,14 +8,38 @@ import SwiftData
 import SaltScanCore
 
 struct HomeView: View {
+    var onScanTapped: () -> Void = {}
+
+    /// The day Home shows; refreshed when the app returns to the foreground or the day rolls over.
+    @State private var today = DayRange(containing: .now)
+    @Environment(\.scenePhase) private var scenePhase
+
+    var body: some View {
+        HomeContent(day: today, onScanTapped: onScanTapped)
+            // A new day rebuilds the content, and with it the day-filtered query.
+            .id(today.start)
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active { refreshDay() }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
+                refreshDay()
+            }
+    }
+
+    private func refreshDay() {
+        let current = DayRange(containing: .now)
+        if current.start != today.start { today = current }
+    }
+}
+
+private struct HomeContent: View {
     var onScanTapped: () -> Void
 
     /// Today's portions, newest first, on the same `DayRange` as the Journal screen.
-    init(onScanTapped: @escaping () -> Void = {}) {
+    init(day: DayRange, onScanTapped: @escaping () -> Void) {
         self.onScanTapped = onScanTapped
-        let today = DayRange(containing: .now)
-        let start = today.start
-        let end = today.end
+        let start = day.start
+        let end = day.end
         _todayLines = Query(
             filter: #Predicate<IntakeLine> { $0.addedAt >= start && $0.addedAt < end },
             sort: [SortDescriptor(\IntakeLine.addedAt, order: .reverse)]
@@ -155,7 +179,7 @@ struct HomeView: View {
                     NavigationLink {
                         JournalView()
                     } label: {
-                        Text(String(format: "home.today.seeAll".localize, todayLines.count))
+                        Text(String(format: "home.today.seeAll".localize, locale: .current, todayLines.count))
                             .font(SSFont.subheadline().weight(.semibold))
                             .foregroundStyle(Color.ssPrimary)
                     }

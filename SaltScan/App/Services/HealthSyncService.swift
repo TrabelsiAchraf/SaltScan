@@ -46,6 +46,9 @@ final class HealthSyncService: ObservableObject {
     private let store = HKHealthStore()
     private let sodiumType = HKQuantityType(.dietarySodium)
 
+    /// Last queued sync or removal; each new one waits for it so a save never lands after a later delete.
+    private var pending: Task<Void, Never>?
+
     private init() {}
 
     var isAvailable: Bool { HKHealthStore.isHealthDataAvailable() }
@@ -66,15 +69,16 @@ final class HealthSyncService: ObservableObject {
     /// Writes, replaces or removes the sample of a portion. No-op when the export is off.
     func sync(_ snapshot: HealthLineSnapshot) {
         guard isEnabled else { return }
-        Task { await apply(snapshot) }
+        let now = Date.now
+        enqueue { await $0.apply(snapshot, now: now) }
     }
 
     /// Removes the sample of a deleted portion. No-op when the export is off.
     func remove(lineID: UUID) {
         guard isEnabled else { return }
-        Task {
+        enqueue { service in
             do {
-                try await deleteSample(lineID: lineID)
+                try await service.deleteSample(lineID: lineID)
             } catch {
                 print("Health delete failed for \(lineID): \(error)")
             }
@@ -105,9 +109,16 @@ final class HealthSyncService: ObservableObject {
 
     // MARK: - Private
 
-    private func apply(_ snapshot: HealthLineSnapshot) async {
+    private func enqueue(_ operation: @escaping @MainActor (HealthSyncService) async -> Void) {
+        pending = Task { [previous = pending] in
+            await previous?.value
+            await operation(self)
+        }
+    }
+
+    private func apply(_ snapshot: HealthLineSnapshot, now: Date) async {
         do {
-            if let sample = makeSample(snapshot, now: .now) {
+            if let sample = makeSample(snapshot, now: now) {
                 try await store.save(sample)
             } else {
                 try await deleteSample(lineID: snapshot.lineID)

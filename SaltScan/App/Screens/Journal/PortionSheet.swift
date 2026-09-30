@@ -81,7 +81,8 @@ struct PortionSheet: View {
         switch inputMode {
         case .servings:
             guard let servingGrams else { return nil }
-            return PortionInput.grams(servings: servings, servingGrams: servingGrams)
+            let grams = PortionInput.grams(servings: servings, servingGrams: servingGrams)
+            return PortionInput.isValid(grams: grams) ? grams : nil
         case .grams:
             let value = PortionInput.parseGrams(gramsText, locale: locale)
             return PortionInput.isValid(grams: value) ? value : nil
@@ -166,7 +167,7 @@ struct PortionSheet: View {
                     .font(SSFont.headline())
                     .foregroundStyle(Color.ssPrimary)
                     .contentTransition(.numericText())
-                Text(String(format: "journal.portion.goalShare".localize, goalShare(sodiumGrams: sodium)))
+                Text(String(format: "journal.portion.goalShare".localize, locale: .current, goalShare(sodiumGrams: sodium)))
                     .font(SSFont.subheadline())
                     .foregroundStyle(Color.ssTextSecondary)
             } else {
@@ -201,6 +202,11 @@ struct PortionSheet: View {
                     .font(SSFont.subheadline())
                     .foregroundStyle(Color.ssTextSecondary)
                     .multilineTextAlignment(.center)
+            } else {
+                Text("journal.portion.gramsRange")
+                    .font(SSFont.caption())
+                    .foregroundStyle(Color.ssSeverityHigh)
+                    .multilineTextAlignment(.center)
             }
         }
         .frame(maxWidth: .infinity)
@@ -208,9 +214,11 @@ struct PortionSheet: View {
     }
 
     private func stepButton(systemImage: String, delta: Int, label: LocalizedStringKey) -> some View {
+        let next = PortionInput.step(servings, by: delta)
+        let exceedsGrams = delta > 0 && servingGrams.map { !PortionInput.isValid(grams: PortionInput.grams(servings: next, servingGrams: $0)) } == true
         let atLimit = delta < 0
             ? servings <= PortionInput.servingRange.lowerBound
-            : servings >= PortionInput.servingRange.upperBound
+            : servings >= PortionInput.servingRange.upperBound || exceedsGrams
         return Button {
             withAnimation { servings = PortionInput.step(servings, by: delta) }
         } label: {

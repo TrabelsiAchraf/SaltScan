@@ -211,7 +211,7 @@ private struct JournalDayList: View {
                 Text(String(format: "home.dailyIntake.goal".localize, formatter.goal(saltGrams: goalGrams)))
                     .font(SSFont.subheadline())
                     .foregroundStyle(Color.ssTextSecondary)
-                Text(String(format: "journal.total.count".localize, lines.count))
+                Text(String(format: "journal.total.count".localize, locale: .current, lines.count))
                     .font(SSFont.caption())
                     .foregroundStyle(Color.ssTextSecondary)
             }
