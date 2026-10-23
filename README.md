@@ -1,5 +1,5 @@
 # SaltScan
-
+Test
 Native iOS app (SwiftUI) that scans food product barcodes and surfaces salt & nutrition information, helping users stay below the WHO 5 g/day salt limit.
 
 <p align="center">
